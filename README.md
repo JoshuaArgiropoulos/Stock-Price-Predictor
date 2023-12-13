@@ -3,7 +3,7 @@ Stock Price Predictor: Unlock the power of machine learning to forecast stock pr
 
 The Stock Price Predictor is a machine learning-powered tool designed to forecast stock prices. Utilizing Jupyter, Pandas, NumPy, and Yahoo Finance API (yfinance), this predictor analyzes historical stock data to provide users with valuable insights for informed investment decisions. Its key features include accurate predictions, user-friendly interaction, and an intuitive interface.
 
-3. Installation:
+Installation:
 To run the Stock Price Predictor, ensure you have the following dependencies installed:
 
 Jupyter
@@ -15,7 +15,7 @@ yfinance
 Data Sources:
 The Stock Price Predictor relies on historical stock data obtained from Yahoo Finance through the yfinance API. For more information on the data source, visit Yahoo Finance.
 
-6. Technologies Used:
+Technologies Used:
 Jupyter
 Pandas
 NumPy
