@@ -1,39 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stocks and Finance</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Financial Services</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        nav {
+            background-color: #666;
+            padding: 1em;
+            text-align: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            padding: 0.5em 1em;
+            margin: 0 1em;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #444;
+        }
+
+        section {
+            padding: 2em;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            color: #555;
+        }
+    </style>
 </head>
+
 <body>
-    <div class="container mt-5">
-        <h1 class="mb-4">Welcome to Stocks and Finance</h1>
+    <header>
+        <h1>Financial Services</h1>
+    </header>
 
-        <div class="row">
-            <div class="col-md-4 mb-3">
-                <a href="#" class="btn btn-primary btn-block">Placeholder Button 1</a>
-            </div>
-            <div class="col-md-4 mb-3">
-                <a href="#" class="btn btn-primary btn-block">Placeholder Button 2</a>
-            </div>
-            <div class="col-md-4 mb-3">
-                <a href="#" class="btn btn-primary btn-block">Placeholder Button 3</a>
-            </div>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/services">Services</a>
+        <a href="/about">About Us</a>
+        <a href="/SignOn">Sign On</a>
+    </nav>
+
+  
+
+    <section id="home" style="display: flex; align-items: center; justify-content: center;">
+        <div style="text-align: center;">
+            <img src="{{ url_for('static', filename='images/IMG_9820.jpg') }}" alt="Your Image" width="500" height="333">
+        </div>
+        <div style="text-align: left; padding-left: 60px; margin-left: 20px;">
+            <h3 style="font-family: 'Style Script', sans-serif; color: #333; margin-bottom: 10px;">Empowering Futures</h3>
+            <p style="color: #555; font-size: 16px;">One Dollar at a Time</p>
+        </div>
+    </section>
+
+    
+    <section id="Vision">
+        <h2 style="text-align: center;">My Vision</h2>
+        <p style="text-align: center;">
+            Welcome to Joshua Argiropoulos's Financial Services, where my personal vision is to empower individuals with the knowledge and tools needed for financial success.
+        </p>
+        <p style="text-align: center;">
+            As the founder and driving force behind this platform, I am dedicated to creating a future where financial literacy is not just a goal but a shared journey towards prosperity.
+        </p>
+        <!-- Add more content about your services here -->
+    </section>
+
+    <section id="services">
+        <h2>The Services</h2>
+        <div>
+            <h3>Educational Content</h3>
+            <p>Unlock your financial potential with our rich repository of educational content. Explore a variety of topics through:</p>
+            <ul>
+                <li>Articles and Blog Posts: Gain insights into budgeting, saving, investing, and debt management with our informative articles.</li>
+                <li>Guides and Tutorials: Navigate the world of financial planning and retirement savings with our step-by-step guides and tutorials.</li>
+            </ul>
         </div>
 
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <a href="#" class="btn btn-secondary btn-block">Placeholder Button 4</a>
-            </div>
-            <div class="col-md-6 mb-3">
-                <a href="#" class="btn btn-secondary btn-block">Placeholder Button 5</a>
-            </div>
+        <div>
+            <h3>Interactive Tools</h3>
+            <p>Empower yourself with practical tools designed to enhance your financial journey:</p>
+            <ul>
+                <li>Budgeting Tools: Seamlessly plan and track your expenses with our interactive budget calculators.</li>
+                <li>Savings Calculators: Visualize your savings growth over time using various investment strategies with our intuitive calculators.</li>
+            </ul>
         </div>
-    </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <div>
+            <h3>Investment Education</h3>
+            <p>Master the art of investing with our comprehensive investment education services:</p>
+            <ul>
+                <li>Investing Basics: Understand the fundamentals of investing, explore different investment types, and learn effective risk management.</li>
+                <li>Stock Market Insights: Stay ahead of the curve with market insights, trends, and valuable investment strategies for financial success.</li>
+            </ul>
+        </div>
+    </section>
+
 </body>
+
 </html>
