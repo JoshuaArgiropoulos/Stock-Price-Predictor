@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ stock_data.symbol }} Stock Info</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">{{ stock_data.symbol }} Stock Information</h1>
+        <table class="table">
+            <tr>
+                <th>Open</th>
+                <td>${{ stock_data.open }}</td>
+            </tr>
+            <tr>
+                <th>High</th>
+                <td>${{ stock_data.high }}</td>
+            </tr>
+            <tr>
+                <th>Low</th>
+                <td>${{ stock_data.low }}</td>
+            </tr>
+            <tr>
+                <th>Close</th>
+                <td>${{ stock_data.close }}</td>
+            </tr>
+            <tr>
+                <th>Volume</th>
+                <td>{{ stock_data.volume }}</td>
+            </tr>
+        </table>
+        <a href="{{ url_for('home') }}" class="btn btn-secondary">Back to Home</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
