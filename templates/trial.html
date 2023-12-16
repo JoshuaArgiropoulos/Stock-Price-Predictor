@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThriveOnFinance</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        .stock-box {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            width: 30%; /* Adjust the width as needed */
+            margin: 10px;
+            transition: box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .stock-box:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        header {
+            background-color: #004080;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        nav {
+            background-color: #0066cc;
+            padding: 1em;
+            text-align: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            padding: 0.5em 1em;
+            margin: 0 1em;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #004080;
+        }
+
+        section {
+            padding: 2em;
+            text-align: center;
+        }
+
+        h2 {
+            color: #004080;
+        }
+
+        p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        #home {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #home img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-right: 40px; /* Adjust the margin as needed to move the image away from the text */
+        }
+
+        .service-box-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .service-box {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            width: 30%; /* Adjust the width as needed */
+            margin: 10px;
+            transition: box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .service-box:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #0066cc; /* Dropdown background color */
+        min-width: 160px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        z-index: 1;
+        border-radius: 0px;
+        text-align: left; /* Align dropdown text to the left */
+        top: 185%; /* Adjust the value as needed */
+    }
+
+    .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        display: block;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #004080; /* Hover color */
+    }
+
+    .dropdown.active .dropdown-content {
+        display: block;
+    }
+        
+    </style>
+</head>
+
+
+<body>
+    <header>
+        <h1>ThriveOnFinance</h1>
+    </header>
+
+    <nav>
+        <a href="/">Home</a>
+        <div class="dropdown" onclick="toggleDropdown(this)">
+            <a href="#" class="dropdown-btn">Services</a>
+            <div class="dropdown-content">
+                <a href="/educational-content">Educational Content</a>
+                <a href="/interactive-tools">Interactive Tools</a>
+                <a href="/investment-education">Investment Education</a>
+                <a href="/investment-education">Stock Information</a>
+            </div>
+        </div>
+        <a href="/about">About Us</a>
+        <a href="/SignOn">Sign On</a>
+    </nav>
+
+    <section id="home">
+        <div>
+            <img src="{{ url_for('static', filename='images/IMG_9820.jpg') }}" alt="Your Image" width="500" height="333">
+        </div>
+        <div>
+            <h3 style="font-family: 'Style Script', sans-serif; color: #004080; margin-bottom: 10px;">Empowering Futures</h3>
+            <p>Transform your financial journey with ThriveOnFinance.</p>
+            <p> Every dollar counts, and we're here to help you make the most of it.</p>
+        </div>
+    </section>
+
+    <section id="Vision">
+        <h2>My Vision</h2>
+        <p>Welcome to Joshua Argiropoulos's Financial Services, where our vision is to empower individuals with the knowledge and tools needed for financial success.</p>
+        <p>As the founder and driving force behind this platform, we are dedicated to creating a future where financial literacy is not just a goal but a shared journey towards prosperity.</p>
+        <!-- Add more content about your services here -->
+    </section>
+
+    <section id="services" class="service-box-container">
+        <div class="service-box" onclick="location.href='/educational-content'">
+            <h3>Educational Content</h3>
+            <p>Unlock your financial potential with our rich repository of educational content. Explore a variety of topics through engaging articles and step-by-step tutorials.</p>
+        </div>
+
+        <div class="service-box" onclick="location.href='/interactive-tools'">
+            <h3>Interactive Tools</h3>
+            <p>Empower yourself with practical tools designed to enhance your financial journey. Seamlessly plan and track your expenses with our interactive budget calculators.</p>
+        </div>
+
+        <div class="service-box" onclick="location.href='/investment-education'">
+            <h3>Investment Education</h3>
+            <p>Master the art of investing with our comprehensive education services. Understand the fundamentals, explore different investment types, and stay ahead with market insights.</p>
+        </div>
+        
+            <div class="stock-box" onclick="location.href='/stock-info'">
+                <h3>Stock Information</h3>
+                <p>Explore historical information and predictions for top stocks, including fanng companies, through advanced machine learning techniques.</p>
+            </div>
+        </section>
+        <script>
+            function toggleDropdown(element) {
+                element.classList.toggle("active");
+            }
+        </script>
+</body>
+
+</html>

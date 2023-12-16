@@ -51,9 +51,11 @@
             color: #555;
         }
     </style>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
 <body>
+
     <header>
         <h1>ThriveOnFinance</h1>
     </header>
@@ -63,24 +65,25 @@
         <a href="/services">Services</a>
         <a href="/about">About Us</a>
         <a href="/SignOn">Sign On</a>
+        <!-- Add more navigation links as needed -->
     </nav>
 
-  
     <section>
-        <h2>Sign Up</h2>
-        <form action="/register" method="post">
-            <!-- Add your form fields here -->
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-
-            <input type="submit" value="Sign Up">
-        </form>
+        <h2>Your HTML Content</h2>
+        <div id="plotly-chart"></div>
+        <script>
+            // Load the Plotly chart
+            Plotly.d3.json('/static/images/chart.html', function (figure) {
+                Plotly.newPlot('plotly-chart', figure.data, figure.layout);
+            });
+    
+            // Function to update the time frame
+            function updateTimeFrame(timeFrame) {
+                // Your logic to update the chart data based on the selected time frame
+                // For example, you can modify the 'x' and 'y' arrays in the data trace.
+                // After updating, use Plotly.update or Plotly.newPlot to refresh the chart.
+            }
+        </script>
     </section>
 
 </body>

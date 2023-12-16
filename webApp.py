@@ -1,15 +1,28 @@
 from flask import Flask, render_template
 from itsdangerous import URLSafeTimedSerializer
+import plotly.graph_objects as go
+import os
 
-app = Flask(__name__)
 
+#app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
+
+# Your code to create the dynamic chart
+def create_chart():
+    chart_path = 'static/images/chart.html'
+    if not os.path.exists(chart_path):
+        fig = go.Figure(data=[go.Scatter(x=[1, 2, 3, 4], y=[10, 20, 25, 30])])
+        fig.update_layout(title='Title of the Chart', xaxis_title='X-axis label', yaxis_title='Y-axis label')
+        fig.write_html(chart_path)
 #---------------------------General buttons on website ------------------------
 
 @app.route('/')
 def home():
     return render_template('home.html')
 
-
+@app.route('/trial')
+def trial():
+    return render_template('trial.html')
 
 @app.route('/services')  # Updated URL pattern
 def services():
@@ -44,43 +57,46 @@ def stock_info():
 
 
 
-# Initialize the serializer with your app secret key
-serializer = URLSafeTimedSerializer(app.secret_key)
+# # Initialize the serializer with your app secret key
+# serializer = URLSafeTimedSerializer(app.secret_key)
 
-@app.route('/register', methods=['POST'])
-def register():
-    # Process registration form
-    # ...
+# @app.route('/register', methods=['POST'])
+# def register():
+#     # Process registration form
+#     # ...
 
-    # Create a verification token
-    token = serializer.dumps(user.email, salt='email-confirm')
+#     # Create a verification token
+#     token = serializer.dumps(user.email, salt='email-confirm')
 
-    # Build the verification URL
-    verification_url = url_for('confirm_email', token=token, _external=True)
+#     # Build the verification URL
+#     verification_url = url_for('confirm_email', token=token, _external=True)
 
-    # Send the verification email
-    send_verification_email(user.email, verification_url)
+#     # Send the verification email
+#     send_verification_email(user.email, verification_url)
 
-    return "Registration successful. Please check your email for verification instructions."
+#     return "Registration successful. Please check your email for verification instructions."
 
-def send_verification_email(email, verification_url):
-    subject = "Confirm Your Email"
-    message = render_template('verification_email.html', verification_url=verification_url)
+# def send_verification_email(email, verification_url):
+#     subject = "Confirm Your Email"
+#     message = render_template('verification_email.html', verification_url=verification_url)
 
-    msg = Message(subject, recipients=[email], html=message)
-    mail.send(msg)
+#     msg = Message(subject, recipients=[email], html=message)
+#     mail.send(msg)
 
-@app.route('/confirm_email/<token>')
-def confirm_email(token):
-    try:
-        email = serializer.loads(token, salt='email-confirm', max_age=3600)  # 1 hour expiration
-    except Exception as e:
-        return "Invalid or expired token."
+# @app.route('/confirm_email/<token>')
+# def confirm_email(token):
+#     try:
+#         email = serializer.loads(token, salt='email-confirm', max_age=3600)  # 1 hour expiration
+#     except Exception as e:
+#         return "Invalid or expired token."
 
-    # Mark the user as verified in your database
-    # ...
+#     # Mark the user as verified in your database
+#     # ...
 
-    return "Email verified successfully. You can now log in."
+#     return "Email verified successfully. You can now log in."
+
+#------------------------------------------------
+
 
 
 # ------------------------------------------------------------------------
