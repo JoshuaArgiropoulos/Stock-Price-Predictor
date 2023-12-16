@@ -1,143 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ThriveOnFinance</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f8f8;
-            color: #333;
-        }
-
-        .stock-box {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 20px;
-            width: 30%; /* Adjust the width as needed */
-            margin: 10px;
-            transition: box-shadow 0.3s;
-            cursor: pointer;
-        }
-
-        .stock-box:hover {
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
-
-        header {
-            background-color: #004080;
-            color: white;
-            text-align: center;
-            padding: 1em;
-        }
-
-        nav {
-            background-color: #0066cc;
-            padding: 1em;
-            text-align: center;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: white;
-            padding: 0.5em 1em;
-            margin: 0 1em;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        nav a:hover {
-            background-color: #004080;
-        }
-
-        section {
-            padding: 2em;
-            text-align: center;
-        }
-
-        h2 {
-            color: #004080;
-        }
-
-        p {
-            color: #666;
-            font-size: 16px;
-        }
-
-        #home {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #home img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-right: 40px; /* Adjust the margin as needed to move the image away from the text */
-        }
-
-        .service-box-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .service-box {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 20px;
-            width: 30%; /* Adjust the width as needed */
-            margin: 10px;
-            transition: box-shadow 0.3s;
-            cursor: pointer;
-        }
-
-        .service-box:hover {
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
-        .dropdown {
-        position: relative;
-        display: inline-block;
-    }
-
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #0066cc; /* Dropdown background color */
-        min-width: 160px;
-        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-        z-index: 1;
-        border-radius: 0px;
-        text-align: left; /* Align dropdown text to the left */
-        top: 185%; /* Adjust the value as needed */
-    }
-
-    .dropdown-content a {
-        color: white;
-        padding: 12px 16px;
-        display: block;
-        text-decoration: none;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-    }
-
-    .dropdown-content a:hover {
-        background-color: #004080; /* Hover color */
-    }
-
-    .dropdown.active .dropdown-content {
-        display: block;
-    }
-        
-    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the external CSS file -->
 </head>
 
 
@@ -200,11 +67,7 @@
                 <p>Explore historical information and predictions for top stocks, including fanng companies, through advanced machine learning techniques.</p>
             </div>
         </section>
-        <script>
-            function toggleDropdown(element) {
-                element.classList.toggle("active");
-            }
-        </script>
+        
 </body>
 
 </html>

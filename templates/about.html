@@ -4,24 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial Services</title>
+    <title>ThriveOnFinance - About Us</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
         }
 
         header {
-            background-color: #333;
+            background-color: #004080;
             color: white;
             text-align: center;
             padding: 1em;
         }
 
         nav {
-            background-color: #666;
+            background-color: #0066cc;
             padding: 1em;
             text-align: center;
         }
@@ -36,20 +36,127 @@
         }
 
         nav a:hover {
-            background-color: #444;
+            background-color: #004080;
         }
 
         section {
             padding: 2em;
+            text-align: center;
         }
 
         h2 {
-            color: #333;
+            color: #004080;
         }
 
         p {
             color: #555;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
+
+        .team-section {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .team-member {
+            max-width: 300px;
+            text-align: center;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: white;
+            transition: box-shadow 0.3s;
+        }
+
+        .team-member img {
+            border-radius: 50%;
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .team-member h3 {
+            color: #004080;
+            margin-bottom: 10px;
+        }
+
+        .team-member p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .team-member:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-goals, .values, .achievements, .future-plans, .connect, .visualize {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .project-goals h3, .values h3, .achievements h3, .future-plans h3, .connect h3, .visualize h3 {
+            color: #004080;
+        }
+
+        .connect a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .connect a:hover {
+            text-decoration: underline;
+        }
+
+        .project-goals ul, .values ul, .achievements ul, .future-plans ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .project-goals li, .values li, .achievements li, .future-plans li {
+            margin-bottom: 10px;
+        }
+        .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #0066cc; /* Dropdown background color */
+        min-width: 160px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        z-index: 1;
+        border-radius: 0px;
+        text-align: left; /* Align dropdown text to the left */
+        top: 185%; /* Adjust the value as needed */
+    }
+
+    .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        display: block;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #004080; /* Hover color */
+    }
+
+    .dropdown.active .dropdown-content {
+        display: block;
+    }
     </style>
 </head>
 
@@ -60,25 +167,87 @@
 
     <nav>
         <a href="/">Home</a>
-        <a href="/services">Services</a>
+        <div class="dropdown" onclick="toggleDropdown(this)">
+            <a href="#" class="dropdown-btn">Services</a>
+            <div class="dropdown-content">
+                <a href="/educational-content">Educational Content</a>
+                <a href="/interactive-tools">Interactive Tools</a>
+                <a href="/investment-education">Investment Education</a>
+                <a href="/investment-education">Stock Information</a>
+            </div>
+        </div>
         <a href="/about">About Us</a>
         <a href="/SignOn">Sign On</a>
     </nav>
 
-    <section>
+    <section class="about-us">
         <h2>About Us</h2>
-        <p>
-            Welcome to Financial Services, your trusted partner in financial literacy and empowerment.
-        </p>
-        <p>
-            Our mission is to provide you with the knowledge and tools necessary to make informed financial decisions and build a secure future. Whether you are just starting your financial journey or looking to enhance your financial well-being, we are here to support you every step of the way.
-        </p>
-        <p>
-            At Financial Services, we believe in transparency, education, and personalized guidance. Our team is dedicated to helping you achieve your financial goals and navigate the complexities of the financial world.
-        </p>
-        <!-- Add more content about your team, values, etc. -->
+        <p>Welcome to ThriveOnFinance, where innovation meets financial empowerment. I am a fourth-year computer engineering student, and it's my passion to provide you with the tools and knowledge to thrive in the world of finance.</p>
+        <p>At ThriveOnFinance, we believe in simplicity, transparency, and the power of financial literacy. It's not just about managing money; it's about shaping your financial future.</p>
+    </section>
+    
+    <section class="team-section">
+        <h2></h2>
+        <div class="team-member">
+            <img src="{{ url_for('static', filename='images/IMG_9820.jpg') }}" alt="Your Image" width="500" height="333">
+            <h3>Joshua Argiropoulos</h3>
+            <p>Computer Engineering Student</p>
+        </div>
+    </section>
+    
+    <section class="project-goals">
+        <h2>Project Goals</h2>
+        <ul>
+            <li>Educational Content: Unlock your financial potential with engaging articles and step-by-step tutorials.</li>
+            <li>Interactive Tools: Empower yourself with practical tools for seamless financial planning.</li>
+            <li>Investment Education: Master the art of investing with comprehensive services and market insights.</li>
+            <li>Stock Information: Explore historical data and predictions for top stocks using advanced machine learning.</li>
+        </ul>
+    </section>
+    
+    <section class="values">
+        <h2>Our Core Values</h2>
+        <ul>
+            <li>Transparency: Providing clear and honest information.</li>
+            <li>Education: Empowering users through knowledge.</li>
+            <li>Innovation: Bringing innovative solutions to financial challenges.</li>
+        </ul>
+    </section>
+    
+    <section class="achievements">
+        <h2>Our Achievements</h2>
+        <ul>
+            <li>Rich repository of educational content.</li>
+            <li>User-friendly interactive tools for financial planning.</li>
+            <li>Comprehensive investment education services.</li>
+            <li>Advanced machine learning techniques for stock information.</li>
+        </ul>
+    </section>
+    
+    <section class="future-plans">
+        <h2>Looking Ahead: Future Plans</h2>
+        <ul>
+            <li>Expanding educational content.</li>
+            <li>Introducing new features.</li>
+            <li>Enhancing the user interface for a seamless experience.</li>
+        </ul>
+    </section>
+    
+    <section class="connect">
+        <h2>Connect With Us</h2>
+        <p>Feel free to reach out at <a href="mailto:Joshua.argiropoulos@gmail.com">Joshua.argiropoulos@gmail.com</a>. Connect on LinkedIn: <a href="https://www.linkedin.com/in/joshua-argiropoulos/" target="_blank">Joshua Argiropoulos</a>.</p>
+        <p>Explore the project on <a href="https://github.com/JoshuaArgiropoulos" target="_blank">GitHub</a>.</p>
+    </section>
+    
+    <section class="visualize">
+        <h2>Visualize Your Financial Future</h2>
+        <p>Explore our project interface for visuals, screenshots, and demos showcasing the user interface and functionalities.</p>
     </section>
 
+<script>
+    function toggleDropdown(element) {
+        element.classList.toggle("active");
+    }
+</script>
 </body>
-
 </html>
