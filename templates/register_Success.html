@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Successful - ThriveOnFinance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    
+</head>
+<body>
+    <header>
+        <h1>ThriveOnFinance</h1>
+    </header>
+
+    <nav>
+        <a href="/">Home</a>
+        <div class="dropdown" onclick="toggleDropdown(this)">
+            <a href="#" class="dropdown-btn">Services</a>
+            <div class="dropdown-content">
+                <a href="/educational-content">Educational Content</a>
+                <a href="/interactive-tools">Interactive Tools</a>
+                <a href="/investment-education">Investment Education</a>
+                <a href="/investment-education">Stock Information</a>
+            </div>
+        </div>
+        <a href="/about">About Us</a>
+        <a href="/SignOn">Sign On</a>
+    </nav>
+
+    <section>
+        <h2>Registration Successful</h2>
+        <p>Thank you for registering! A confirmation email has been sent to your email address. Please follow the instructions in the email to activate your account.</p>
+    </section>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

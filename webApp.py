@@ -1,14 +1,23 @@
-from flask import Flask, render_template
 from itsdangerous import URLSafeTimedSerializer
 import plotly.graph_objects as go
 import os
 from flask_sqlalchemy import SQLAlchemy
+from flask import Flask, request, render_template, redirect, url_for, flash
+from werkzeug.security import generate_password_hash
+from flask_mail import Mail, Message
+from flask_wtf import CSRFProtect
 
 
 #app = Flask(__name__)
 app = Flask(__name__, static_url_path='/static')
 app.config.from_pyfile('config.py')
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI')
+mail = Mail(app)
+csrf = CSRFProtect(app)
+# Optionally override configuration with environment variable
+if os.environ.get('DATABASE_URI'):
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI')
+
+
 
 
 db = SQLAlchemy(app)
@@ -30,15 +39,15 @@ def home():
 def trial():
     return render_template('trial.html')
 
-@app.route('/services')  # Updated URL pattern
+@app.route('/services') 
 def services():
     return render_template('Service.html')
 
-@app.route('/about')  # Updated URL pattern
+@app.route('/about')  
 def about():
     return render_template('about.html')
 
-@app.route('/SignOn')  # Updated URL pattern
+@app.route('/SignOn')  
 def sign_on():
     return render_template('SignOn.html')
 
@@ -61,50 +70,42 @@ def stock_info():
 
 #---------------------------Mail Features -------------------------------------------------------
 
+@app.route('/register', methods=['POST'])
+def register():
+    # Extract data from form
+    username = request.form.get('username')
+    email = request.form.get('email')
+    password = request.form.get('password')
+    confirm_password = request.form.get('confirm_password')  # Make sure to add this to your form
+
+    if password != confirm_password:
+        flash('Passwords do not match.')
+        return redirect(url_for('sign_up'))
 
 
-# # Initialize the serializer with your app secret key
-# serializer = URLSafeTimedSerializer(app.secret_key)
+    # Password hashing
+    hashed_password = generate_password_hash(password)
 
-# @app.route('/register', methods=['POST'])
-# def register():
-#     # Process registration form
-#     # ...
+    flash('Registration successful! Please check your email.', 'success')
+    # Redirect to a different page after successful registration, e.g., login page
+    return redirect(url_for('sign_on'))
+    
 
-#     # Create a verification token
-#     token = serializer.dumps(user.email, salt='email-confirm')
+    
+    # Process registration form
+    
+def send_confirmation_email(user_email, token):
 
-#     # Build the verification URL
-#     verification_url = url_for('confirm_email', token=token, _external=True)
-
-#     # Send the verification email
-#     send_verification_email(user.email, verification_url)
-
-#     return "Registration successful. Please check your email for verification instructions."
-
-# def send_verification_email(email, verification_url):
-#     subject = "Confirm Your Email"
-#     message = render_template('verification_email.html', verification_url=verification_url)
-
-#     msg = Message(subject, recipients=[email], html=message)
-#     mail.send(msg)
-
-# @app.route('/confirm_email/<token>')
-# def confirm_email(token):
-#     try:
-#         email = serializer.loads(token, salt='email-confirm', max_age=3600)  # 1 hour expiration
-#     except Exception as e:
-#         return "Invalid or expired token."
-
-#     # Mark the user as verified in your database
-#     # ...
-
-#     return "Email verified successfully. You can now log in."
-
-#------------------------------------------------
-
-
-
+@app.route('/confirm_email/<token>')
+def confirm_email(token):
+    # Verify the token
+    # Activate the user's account if the token is valid
+    # ...
+    return 'Email confirmed successfully!'
+    msg = Message('Confirm Your Email', sender='your_email@example.com', recipients=[user_email])
+    confirm_url = url_for('confirm_email', token=token, _external=True)
+    msg.body = 'Your confirmation link is: {}'.format(confirm_url)
+    mail.send(msg)
 # ------------------------------------------------------------------------
 
 if __name__ == '__main__':
