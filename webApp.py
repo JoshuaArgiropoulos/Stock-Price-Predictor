@@ -2,11 +2,17 @@ from flask import Flask, render_template
 from itsdangerous import URLSafeTimedSerializer
 import plotly.graph_objects as go
 import os
+from flask_sqlalchemy import SQLAlchemy
 
 
 #app = Flask(__name__)
 app = Flask(__name__, static_url_path='/static')
+app.config.from_pyfile('config.py')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI')
 
+
+db = SQLAlchemy(app)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Your code to create the dynamic chart
 def create_chart():
     chart_path = 'static/images/chart.html'

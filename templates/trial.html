@@ -3,71 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ThriveOnFinance</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to the external CSS file -->
+    <title>About Me - [Your Project Name]</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/trial.css') }}">
 </head>
-
-
 <body>
     <header>
-        <h1>ThriveOnFinance</h1>
+        <h1>[Your Project Name]</h1>
+        <nav>
+            <!-- Navigation items here -->
+        </nav>
     </header>
 
-    <nav>
-        <a href="/">Home</a>
-        <div class="dropdown" onclick="toggleDropdown(this)">
-            <a href="#" class="dropdown-btn">Services</a>
-            <div class="dropdown-content">
-                <a href="/educational-content">Educational Content</a>
-                <a href="/interactive-tools">Interactive Tools</a>
-                <a href="/investment-education">Investment Education</a>
-                <a href="/investment-education">Stock Information</a>
-            </div>
-        </div>
-        <a href="/about">About Us</a>
-        <a href="/SignOn">Sign On</a>
-    </nav>
+    <main>
+        <section class="about-section">
+            <h2>About the Project</h2>
+            <p>This project, [Your Project Name], was created as a personal initiative to address [briefly describe the problem or need your project addresses]. Inspired by [your inspiration], this website aims to [state the purpose or goal of your website].</p>
 
-    <section id="home">
-        <div>
-            <img src="{{ url_for('static', filename='images/IMG_9820.jpg') }}" alt="Your Image" width="500" height="333">
-        </div>
-        <div>
-            <h3 style="font-family: 'Style Script', sans-serif; color: #004080; margin-bottom: 10px;">Empowering Futures</h3>
-            <p>Transform your financial journey with ThriveOnFinance.</p>
-            <p> Every dollar counts, and we're here to help you make the most of it.</p>
-        </div>
-    </section>
+            <h2>About Me</h2>
+            <img src="{{ url_for('static', filename='images/your-photo.jpg') }}" alt="Your Name" class="profile-pic">
+            <p>Hi, I'm [Your Name], the developer behind this project. With a background in [your background], I have always been passionate about [your passion]. This project is a culmination of my skills in [list skills or technologies used].</p>
 
-    <section id="Vision">
-        <h2>My Vision</h2>
-        <p>Welcome to Joshua Argiropoulos's Financial Services, where our vision is to empower individuals with the knowledge and tools needed for financial success.</p>
-        <p>As the founder and driving force behind this platform, we are dedicated to creating a future where financial literacy is not just a goal but a shared journey towards prosperity.</p>
-        <!-- Add more content about your services here -->
-    </section>
+            <h2>Technologies Used</h2>
+            <p>[Your Project Name] is built using [list of technologies, frameworks, and tools]. I chose these technologies because [brief explanation].</p>
 
-    <section id="services" class="service-box-container">
-        <div class="service-box" onclick="location.href='/educational-content'">
-            <h3>Educational Content</h3>
-            <p>Unlock your financial potential with our rich repository of educational content. Explore a variety of topics through engaging articles and step-by-step tutorials.</p>
-        </div>
+            <h2>What I've Learned</h2>
+            <p>Throughout the development of this project, I have learned [list of new skills or knowledge gained]. One of the major challenges I faced was [mention a challenge and how you overcame it].</p>
 
-        <div class="service-box" onclick="location.href='/interactive-tools'">
-            <h3>Interactive Tools</h3>
-            <p>Empower yourself with practical tools designed to enhance your financial journey. Seamlessly plan and track your expenses with our interactive budget calculators.</p>
-        </div>
+            <h2>Future Plans</h2>
+            <p>I plan to continue developing this project by [your future plans for the project].</p>
 
-        <div class="service-box" onclick="location.href='/investment-education'">
-            <h3>Investment Education</h3>
-            <p>Master the art of investing with our comprehensive education services. Understand the fundamentals, explore different investment types, and stay ahead with market insights.</p>
-        </div>
-        
-            <div class="stock-box" onclick="location.href='/stock-info'">
-                <h3>Stock Information</h3>
-                <p>Explore historical information and predictions for top stocks, including fanng companies, through advanced machine learning techniques.</p>
-            </div>
+            <h2>Contact Me</h2>
+            <p>If you have any questions, suggestions, or just want to connect, feel free to reach out to me at [your email address] or connect with me on [LinkedIn/GitHub/other social media].</p>
         </section>
-        
-</body>
+    </main>
 
+    <footer>
+        <!-- Footer content here -->
+    </footer>
+</body>
 </html>
