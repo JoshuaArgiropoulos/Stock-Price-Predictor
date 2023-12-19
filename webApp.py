@@ -119,7 +119,14 @@ def dashboard():
     # Ensure user is logged in, otherwise redirect to login page
     if 'user_id' not in session:
         return redirect(url_for('sign_on'))
-    return render_template('dashboard.html')
+
+    user_id = session['user_id']
+    user = User.query.get(user_id)
+    if user:
+        return render_template('dashboard.html', username=user.username)
+    else:
+        # Handle the case where the user doesn't exist
+        return redirect(url_for('sign_on'))
 
 #---------------------------Mail Features -------------------------------------------------------
 
@@ -132,10 +139,16 @@ def register():
         email = form.email.data
         password = form.password.data
 
-        # Check if user already exists
-        existing_user = User.query.filter_by(email=email).first()
-        if existing_user is not None:
-            flash('A user with that email already exists.')
+        # Check if username or email already exists
+        existing_user_by_username = User.query.filter_by(username=username).first()
+        existing_user_by_email = User.query.filter_by(email=email).first()
+
+        if existing_user_by_username:
+            flash('A user with that username already exists. Please choose a different username.')
+            return redirect(url_for('sign_up'))
+
+        if existing_user_by_email:
+            flash('A user with that email already exists. Please choose a different email.')
             return redirect(url_for('sign_up'))
 
         # Hash the password
@@ -144,7 +157,13 @@ def register():
         # Create new user and save to database
         new_user = User(username=username, email=email, password_hash=hashed_password)
         db.session.add(new_user)
-        db.session.commit()
+
+        try:
+            db.session.commit()
+        except Exception as e:
+            db.session.rollback()  # Rollback the session to a clean state
+            flash('An error occurred while registering. Please try again.')
+            return redirect(url_for('sign_up'))
 
         # Send confirmation email
         token = s.dumps(new_user.id, salt='email-confirm-salt')
@@ -162,13 +181,14 @@ def register():
 
     # If validation fails, redirect back to the sign-up page
     return redirect(url_for('sign_up'))
+
     
 
     
     
     
 def send_confirmation_email(user_email, token):
-    msg = Message('Confirm Your Email', sender='ThriveOnFinance', recipients=[user_email])
+    msg = Message('Confirm Your Email', sender='postmaster@sandboxa07c204ac44d497f9fabdb2e82aa9181.mailgun.org', recipients=[user_email])
     confirm_url = url_for('confirm_email', token=token, _external=True)
     msg.body = 'Your confirmation link is: {}'.format(confirm_url)
     mail.send(msg)

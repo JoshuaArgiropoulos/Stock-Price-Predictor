@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - ThriveOnFinance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+    <header>
+        <h1>ThriveOnFinance Dashboard</h1>
+    </header>
+
+    <nav>
+        <!-- ... existing nav content ... -->
+        <a href="/">Log Out</a>
+    </nav>
+
+    <section id="dashboard-welcome">
+        <h2>Welcome, {{ username }}!</h2>
+        <p>Here's your personalized dashboard:</p>
+    </section>
+
+    <div class="dashboard-grid">
+        <div class="service-box" onclick="location.href='/educational-content'">
+            <!-- Content for Educational Content -->
+        </div>
+
+        <div class="service-box" onclick="location.href='/interactive-tools'">
+            <!-- Content for Interactive Tools -->
+        </div>
+
+        <div class="service-box" onclick="location.href='/investment-education'">
+            <!-- Content for Investment Education -->
+        </div>
+
+        <div class="service-box" onclick="location.href='/stock-info'">
+            <!-- Content for Stock Information -->
+        </div>
+    </div>
+
+    <section id="dashboard-personalized-insights" class="dashboard-section">
+        <h3>Your Personalized Insights</h3>
+        <!-- Dynamic content showing user's personalized insights or recommendations -->
+    </section>
+
+    <section id="dashboard-customize" class="dashboard-section">
+        <h3>Customize Your Experience</h3>
+        <!-- Options for user to customize dashboard or site experience -->
+    </section>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
