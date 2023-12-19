@@ -1,27 +1,22 @@
 # Stock-Price-Predictor
 Stock Price Predictor: Unlock the power of machine learning to forecast stock prices. This project utilizes advanced algorithms to analyze historical data, providing precise predictions for informed investment decisions. Enhance your strategy in the dynamic world of finance. 
 
-The Stock Price Predictor is a machine learning-powered tool designed to forecast stock prices. Utilizing Jupyter, Pandas, NumPy, and Yahoo Finance API (yfinance), this predictor analyzes historical stock data to provide users with valuable insights for informed investment decisions. Its key features include accurate predictions, user-friendly interaction, and an intuitive interface.
+Overview
 
-Installation:
-To run the Stock Price Predictor, ensure you have the following dependencies installed:
+ThriveOnFinance is a dynamic web application built with Flask and designed to offer various financial tools and resources. It features user authentication, interactive data visualizations using Plotly, email functionalities for account verification, and a user-friendly dashboard for easy navigation.
 
-Jupyter
-Pandas
-NumPy
-yfinance
-
-
-Data Sources:
-The Stock Price Predictor relies on historical stock data obtained from Yahoo Finance through the yfinance API. For more information on the data source, visit Yahoo Finance.
-
-Technologies Used:
-Jupyter
-Pandas
-NumPy
-yfinance
-
-This project leverages these technologies to create an efficient and powerful stock price prediction tool.
+Key Features
+User Authentication: Secure registration and login system with password hashing and session management.
+Interactive Data Visualization: Utilizing Plotly to display engaging financial charts and graphs.
+Email Integration: Flask-Mail is used to send confirmation emails during user registration.
+User Dashboard: Customize the user experience with access to various financial tools and resources.
+Technologies Used
+Flask
+SQLAlchemy
+MySQL
+Plotly
+Flask-Mail
+WTForms
 
 pip install -r requirements.txt
 
