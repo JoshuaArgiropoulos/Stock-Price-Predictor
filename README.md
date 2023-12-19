@@ -23,7 +23,7 @@ yfinance
 
 This project leverages these technologies to create an efficient and powerful stock price prediction tool.
 
-Work in progress
+pip install -r requirements.txt
 
 run webApp.py 
 
