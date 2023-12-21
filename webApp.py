@@ -10,6 +10,7 @@ from flask_wtf import CSRFProtect
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Email, EqualTo
+import requests
 
 app = Flask(__name__, static_url_path='/static')
 app.config.from_pyfile('config.py')
@@ -25,6 +26,7 @@ if os.environ.get('DATABASE_URI'):
 db = SQLAlchemy(app)
 # Token Serializer Initialization
 s = URLSafeTimedSerializer(app.config['SECRET_KEY'])
+NEWS_API_KEY = app.config['NEWS_API_KEY']
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -209,7 +211,35 @@ def confirm_email(token):
         return 'User not found'
     
   
-# ------------------------------------------------------------------------
+# -----------------------News API-------------------------------------------------
+@app.route('/educational-content')
+def financial_news():
+    # Set up parameters for the News API request
+    
+    NEWS_API_ENDPOINT = 'https://newsapi.org/v2/top-headlines'
+
+    params = {
+        'apiKey': NEWS_API_KEY,
+        'category': 'business',  # Fetch business and financial news
+        'language': 'en',        # English language
+        'pageSize': 10           # Number of articles per request
+    }
+
+    # Make the API request
+    response = requests.get(NEWS_API_ENDPOINT, params=params)
+    news_data = response.json()
+
+    # Extract and pass the news articles to the template
+    articles = news_data.get('articles', [])
+
+    return render_template('educational-content.html', articles=articles)
+
+
+
+
+
+
+#---------------------------------------------------------------------------------
 
 if __name__ == '__main__':
     app.run(debug=True)
