@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Content - ThriveOnFinance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Investment.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Educational Content</h1>
+    </header>
+    
+    <nav>
+        <a href="/">Home</a>
+        <div class="dropdown" onclick="toggleDropdown(this)">
+            <a href="#" class="dropdown-btn">Services</a>
+            <div class="dropdown-content">
+                <a href="/educational-content">Educational Content</a>
+                <a href="/interactive-tools">Interactive Tools</a>
+                <a href="/investment-education">Investment Education</a>
+                <a href="/stock-info">Stock Information</a>
+            </div>
+        </div>
+        <a href="/about">About Us</a>
+        <a href="/SignOn">Sign On</a>
+    </nav>
+
+    <section id="educational-content">
+        <div class="article">
+            <h2>Financial Literacy</h2>
+            <p>Learn the basics of financial literacy and how to manage your money effectively.</p>
+            <a href="/article/1" target="_blank">Read more</a>
+        </div>
+        
+        <div class="article">
+            <h2>Investment Strategies</h2>
+            <p>Explore different investment strategies to grow your wealth.</p>
+            <a href="/article/2" target="_blank">Read more</a>
+        </div>
+
+        <!-- Add more articles here -->
+    </section>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    
+</body>
+</html>

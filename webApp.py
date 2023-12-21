@@ -11,6 +11,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Email, EqualTo
 import requests
+#from datetime import datetime
+
 
 app = Flask(__name__, static_url_path='/static')
 app.config.from_pyfile('config.py')
@@ -19,9 +21,6 @@ csrf = CSRFProtect(app)
 # Optionally override configuration with environment variable
 if os.environ.get('DATABASE_URI'):
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI')
-
-
-
 
 db = SQLAlchemy(app)
 # Token Serializer Initialization
@@ -53,7 +52,16 @@ class LoginForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired()])
     password = PasswordField('Password', validators=[InputRequired()])
     submit = SubmitField('Log In')
+# def time_ago(time=False):
+#     """
+#     A filter to format datetime as a 'time ago' string.
+#     """
+#     if type(time) is str:
+#         time = datetime.strptime(time, '%Y-%m-%dT%H:%M:%SZ') # Adjust the format as needed
 
+#     now = datetime.now()
+#     diff = now - time
+#app.jinja_env.filters['time_ago'] = time_ago
 # Your code to create the dynamic chart
 def create_chart():
     chart_path = 'static/images/chart.html'
@@ -129,6 +137,10 @@ def dashboard():
     else:
         # Handle the case where the user doesn't exist
         return redirect(url_for('sign_on'))
+
+@app.route('/investment')
+def investmentInfo():
+    return render_template('investment.html')
 
 #---------------------------Mail Features -------------------------------------------------------
 
@@ -212,12 +224,12 @@ def confirm_email(token):
     
   
 # -----------------------News API-------------------------------------------------
-@app.route('/educational-content')
+
+
+@app.route('/Financial-News')
 def financial_news():
     # Set up parameters for the News API request
-    
     NEWS_API_ENDPOINT = 'https://newsapi.org/v2/top-headlines'
-
     params = {
         'apiKey': NEWS_API_KEY,
         'category': 'business',  # Fetch business and financial news
@@ -232,9 +244,7 @@ def financial_news():
     # Extract and pass the news articles to the template
     articles = news_data.get('articles', [])
 
-    return render_template('educational-content.html', articles=articles)
-
-
+    return render_template('Financial-News.html', articles=articles)
 
 
 

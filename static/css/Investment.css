@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Style the header to match the home page */
+header {
+    background-color: #004080;
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
+
+/* Style the navigation bar to match the home page */
+nav {
+    background-color: #0066cc;
+    padding: 1em;
+    text-align: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding: 0.5em 1em;
+    margin: 0 1em;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #004080;
+}
+
+/* Style the educational content section */
+#educational-content {
+    padding: 2em;
+    text-align: center;
+}
+
+.article {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%; /* Adjust the width as needed */
+    margin: 10px auto; /* Center-align the articles */
+    transition: box-shadow 0.3s;
+}
+
+.article:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    color: #004080;
+}
+
+p {
+    color: #666;
+    font-size: 16px;
+}
+
+a {
+    color: #004080;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

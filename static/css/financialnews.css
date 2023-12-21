@@ -1,0 +1,89 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #0057b8;
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
+
+nav {
+    background-color: #007bff;
+    padding: 1em;
+    text-align: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding: 0.5em 1em;
+    margin: 0 1em;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+nav a:hover {
+    background-color: #004080;
+}
+
+.news-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0;
+}
+
+.news-item {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; /* Space between news items */
+    overflow: hidden; /* Keeps the image within the border-radius */
+}
+
+.news-image {
+    flex-shrink: 0; /* Prevents the image from shrinking smaller than its width */
+    margin-right: 20px; /* Space between the image and the content */
+}
+
+.news-image img {
+    width: 120px; /* Fixed width, can adjust based on your preference */
+    height: 80px; /* Fixed height, can adjust to maintain aspect ratio */
+    object-fit: cover; /* Ensures the image covers the area */
+    border-radius: 10px 0 0 10px; /* Rounded corners for images on the left side */
+}
+
+.news-content {
+    padding: 15px;
+    flex-grow: 1;
+}
+
+.news-title {
+    margin: 0 0 5px 0; /* Adjusted bottom margin for the title */
+    font-size: 1.25rem; /* Larger font size for titles */
+}
+
+.news-meta {
+    font-size: 0.875rem;
+    color: #666;
+}
+
+.news-time {
+    font-weight: bold;
+}
+
+footer {
+    background-color: #002855;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
