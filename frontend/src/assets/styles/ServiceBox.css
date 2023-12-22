@@ -1,0 +1,20 @@
+.service-box-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.service-box {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 30%;
+    margin: 10px;
+    transition: box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.service-box:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}

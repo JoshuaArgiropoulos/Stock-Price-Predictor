@@ -1,4 +1,6 @@
 import React from 'react';
+import '../assets/styles/BaseStyles.css';
+import '../assets/styles/Section.css';
 
 function VisionSection() {
   return (

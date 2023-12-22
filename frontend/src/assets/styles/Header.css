@@ -1,0 +1,30 @@
+header {
+    background-color: #004080;
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
+
+nav {
+    background-color: #0066cc;
+    padding: 1em;
+    text-align: center;
+}
+
+.nav-link, .dropdown-btn {
+    text-decoration: none;
+    color: white;
+    padding: 0.5em 1em;
+    margin: 0 1em;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    background-color: #0066cc;
+    display: inline-block;
+    border: none;
+    outline: none;
+    font-size: 16px; /* Adjust the desired font size */
+}
+
+.nav-link:hover, .dropdown-btn:hover {
+    background-color: #004080;
+}

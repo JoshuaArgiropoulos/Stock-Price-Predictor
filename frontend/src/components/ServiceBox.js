@@ -1,4 +1,6 @@
 import React from 'react';
+import '../assets/styles/BaseStyles.css';
+import '../assets/styles/ServiceBox.css';
 
 function ServiceBox({ title, link, description }) {
   return (

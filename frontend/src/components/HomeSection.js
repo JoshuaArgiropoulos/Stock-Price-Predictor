@@ -1,5 +1,8 @@
 import React from 'react';
-import imageSrc from '../assests/images/IMG_9820.JPG'; 
+import imageSrc from '../assets/images/IMG_9820.JPG'; 
+import '../assets/styles/BaseStyles.css';
+import '../assets/styles/Home.css';
+import '../assets/styles/Section.css';
 
 function HomeSection() {
   return (
