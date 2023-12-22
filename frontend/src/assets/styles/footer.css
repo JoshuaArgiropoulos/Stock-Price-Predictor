@@ -1,0 +1,8 @@
+
+.footer p {
+    color: white !important; /* Make text color important */
+    background-color: #002855;
+    text-align: center;
+    padding: 2em;
+    margin: 0;
+}
