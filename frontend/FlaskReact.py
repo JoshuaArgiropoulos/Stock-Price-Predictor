@@ -1,3 +1,4 @@
+import yfinance as yf
 from flask import Flask, jsonify, request, send_from_directory, session, flash, render_template
 import requests
 from flask_cors import CORS
@@ -78,5 +79,24 @@ def financial_news():
         return jsonify({'error': 'An internal server error occurred.'}), 500
 
 #---------------------------------------------------------------------------------
+#----------------------STOCKS-----------------------------------------------------
+@app.route("/api/stock-data/<ticker>", methods=["GET"])
+def get_stock_data(ticker):
+    try:
+        # Get timeline parameters from the request (e.g., start and end dates)
+        start_date = request.args.get("start_date")
+        end_date = request.args.get("end_date")
+
+        # Fetch historical stock data using yfinance
+        df = yf.download(ticker, start=start_date, end=end_date)
+
+        # Convert the DataFrame to a dictionary
+        historical_data = df.to_dict(orient="list")
+
+        return jsonify({"data": historical_data})
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+#-----------------------------------------------------------------------------------------------
 if __name__ == '__main__':
     app.run(debug=True)

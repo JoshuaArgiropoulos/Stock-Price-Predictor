@@ -6,6 +6,7 @@ import SignOn from './MainPages/SignOn';  // Ensure the path is correct
 import SignUp from './MainPages/SignUp';
 import FinancialNews from './MainPages/FinancialNews';
 import AboutUs from './MainPages/AboutUs';
+import Stocks from './MainPages/Stocks';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutUs/>} />
-          <Route path="/stock-info" element={<Blank />} />
+          <Route path="/stock-info" element={<Stocks />} />
           <Route path="/Financial-News" element={<FinancialNews />} />
           <Route path="/SignOn" element={<SignOn />} />
           <Route path="/SignUp" element={<SignUp />} />
