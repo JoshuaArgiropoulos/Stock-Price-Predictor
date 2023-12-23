@@ -61,7 +61,7 @@ function SignOn() {
             <label>Password</label>
             <input type="password" value={password} onChange={handlePasswordChange} size="32" />
           </p>
-          <p><button type="submit">Log In</button></p>
+          <button type="submit">Log In</button>
         </form>
 
         {/* Display flash messages */}
@@ -70,9 +70,11 @@ function SignOn() {
         ))}
 
         <p>If you don't have an account, <a className="signup-link" href="/SignUp">sign up</a>.</p>
+       {/* Add some whitespace */}
+      <div style={{ marginBottom: '8rem' }}></div>
       </section>
       
-      {/* ... Footer ... */}
+      <Footer/>
     </div>
   );
 }

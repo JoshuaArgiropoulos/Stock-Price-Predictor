@@ -8,6 +8,7 @@ h2 {
     color: #004080;
 }
 
+
 p {
     color: #666;
     font-size: 16px;
@@ -36,17 +37,27 @@ input {
     box-sizing: border-box;
     border: 1px solid #ddd;
     border-radius: 5px;
+    background-color: #f0f8ff;
 }
 
-input[type="submit"] {
-    background-color: #004080;
-    color: #fff;
-    cursor: pointer;
+
+button[type="submit"] {
+    background-color: #004080; /* Blue background */
+    color: white; /* White text */
+    padding: 12px 24px; /* Size of the button */
+    font-size: 16px; /* Size of the text */
+    border: none; /* Remove the border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Hand icon on hover */
+    display: block; /* Center the button */
+    width: 100%; /* Full width */
+    margin-top: 20px; /* Space above the button */
 }
 
-input[type="submit"]:hover {
-    background-color: #002040;
+button[type="submit"]:hover {
+    background-color: #002040; /* Slightly darker blue on hover */
 }
+
 
 /* Links for sign-up */
 .signup-link {
