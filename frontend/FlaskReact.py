@@ -83,32 +83,25 @@ def financial_news():
 @app.route("/api/stock-info/<ticker>", methods=["GET"])
 def get_stock_info(ticker):
     try:
-        # Get timeline parameters from the request (e.g., start and end dates)
-        start_date = request.args.get("start_date")
         end_date = request.args.get("end_date")
+        start_date = request.args.get("start_date")  # Get the start date, which may be None or ''
 
-        # Log the values of start_date and end_date
-        print(f"Start Date: {start_date}, End Date: {end_date}")
+        # If the start date is empty, set it to None to fetch the entire history
+        if not start_date:
+            start_date = None
 
         # Fetch historical stock data using yfinance
         df = yf.download(ticker, start=start_date, end=end_date)
 
-        # Reset the index to convert the Date index into a column
+        if df.empty:
+            return jsonify({"error": "Stock not found"}), 404
+
         df.reset_index(inplace=True)
-
-        # Log the fetched data
-        print(df.head())
-
-        # Extract only the Date and Close columns
         historical_data = df[["Date", "Close"]]
-
-        # Convert the DataFrame to a list of dictionaries
         historical_data_list = historical_data.to_dict(orient="records")
 
         return jsonify({"data": historical_data_list})
-
     except Exception as e:
-        # Log the error message
         print(f"Error: {str(e)}")
         return jsonify({"error": str(e)}), 500
 
