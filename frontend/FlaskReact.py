@@ -29,10 +29,6 @@ class User(db.Model):
 def serve_react_app():
     return send_from_directory(app.static_folder, 'index.html')
 
-@app.route('/api/hello', methods=['GET'])
-def hello():
-    return jsonify({"message": "Hello from Flask!"})
-
 
 @app.route('/api/signup', methods=['POST'])
 def api_sign_up():
@@ -54,7 +50,7 @@ def api_sign_up():
 
     return jsonify({"message": "User registered successfully"}), 201
 # -----------------------News API-------------------------------------------------
-@app.route('/api/financial-news')  # Use lowercase and hyphens, not camelCase
+@app.route('/api/financial-news')  
 def financial_news():
     NEWS_API_ENDPOINT = 'https://newsapi.org/v2/top-headlines'
     params = {
