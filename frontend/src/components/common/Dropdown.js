@@ -18,7 +18,7 @@ function Dropdown() {
           <a href="/Financial-News">Financial News</a>
           <a href="/interactive-tools">Interactive Tools</a>
           <a href="/investment">Investment Education</a>
-          <a href="/investment-education">Stock Information</a>
+          <a href="/stock-info">Stock Information</a>
         </div>
       )}
     </div>

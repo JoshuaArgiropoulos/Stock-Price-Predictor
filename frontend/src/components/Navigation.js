@@ -9,7 +9,7 @@ function Navigation() {
 
   const toggleDropdown = () => {
     setDropdownActive(!dropdownActive);
-    console.log("Dropdown Active:", !dropdownActive);
+    
   };
 
   return (
