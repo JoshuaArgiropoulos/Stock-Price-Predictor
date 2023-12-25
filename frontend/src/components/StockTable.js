@@ -44,6 +44,22 @@ function StockTable() {
       setError("Please fill in all fields");
       return;
     }
+    // Validate that the Start Date is before the End Date
+  if (!sinceInception && new Date(startDate) >= new Date(endDate)) {
+    setError("Start Date must be before End Date");
+    return;
+  }
+  // Validate that the End Date is not a future date
+  const currentDate = new Date();
+  if (new Date(endDate) > currentDate) {
+    setError("End Date cannot be a future date");
+    return;
+  }
+  const historicalDate = '1900-01-01';
+  if (!sinceInception && new Date(startDate) < new Date(historicalDate)) {
+    setError("Start Date cannot be earlier than " + historicalDate);
+    return;
+  }
    
 
     //const effectiveStartDate = sinceInception ? '1900-01-01' : startDate;
