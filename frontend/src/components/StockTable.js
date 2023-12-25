@@ -55,7 +55,7 @@ function StockTable() {
     setError("End Date cannot be a future date");
     return;
   }
-  const historicalDate = '1900-01-01';
+  const historicalDate = '1800-01-01';
   if (!sinceInception && new Date(startDate) < new Date(historicalDate)) {
     setError("Start Date cannot be earlier than " + historicalDate);
     return;

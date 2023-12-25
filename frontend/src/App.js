@@ -7,6 +7,8 @@ import SignUp from './MainPages/SignUp';
 import FinancialNews from './MainPages/FinancialNews';
 import AboutUs from './MainPages/AboutUs';
 import Stocks from './MainPages/Stocks';
+import InteractivePage from './MainPages/InteractivePage';
+import InvestmentEducation from './MainPages/InvestmentEducation';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutUs/>} />
           <Route path="/stock-info" element={<Stocks />} />
+          <Route path="/investment" element={<InvestmentEducation />} />
+          <Route path="/interactive-tools" element={<InteractivePage />} />
           <Route path="/Financial-News" element={<FinancialNews />} />
           <Route path="/SignOn" element={<SignOn />} />
           <Route path="/SignUp" element={<SignUp />} />
