@@ -12,6 +12,9 @@ function AboutUs() {
       <div className="HomePage">
         <Header />
         <Navigation />
+        {/* Add some whitespace */}
+     
+      <div style={{ marginBottom: '12rem' }}></div>
         <Footer />
       </div>
     

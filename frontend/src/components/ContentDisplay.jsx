@@ -1,5 +1,6 @@
 // ContentDisplay.jsx
 import React from 'react';
+import '../assets/styles/ContentDisplay.css';
 
 const ContentDisplay = ({ topic }) => {
   const renderContent = () => {

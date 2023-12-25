@@ -1,0 +1,29 @@
+/* Styles for the container of the topic selector */
+.topic-selector {
+    margin: 20px; /* Adjust the margin as needed */
+    padding: 10px; /* Adjust the padding as needed */
+  }
+  
+  /* Styles for the dropdown */
+  .topic-selector select {
+    width: 100%; /* Make the select box take up the full width of the container */
+    padding: 8px 12px; /* Adjust the padding inside the select box */
+    margin: 8px 0; /* Spacing around the select box */
+    border: 1px solid #ccc; /* A light border for the select box */
+    border-radius: 4px; /* Slightly rounded corners */
+    background-color: white; /* A white background */
+    font-size: 16px; /* Adjust the font size as needed */
+    cursor: pointer; /* Change cursor to indicate it's selectable */
+  }
+  
+  /* Hover and focus styles for the dropdown */
+  .topic-selector select:hover,
+  .topic-selector select:focus {
+    border-color: #888; /* Darker border on hover/focus */
+    outline: none; /* Remove the default focus outline */
+  }
+  
+  /* Style for the options inside the dropdown */
+  .topic-selector option {
+    padding: 10px; /* Add some padding to the options */
+  }

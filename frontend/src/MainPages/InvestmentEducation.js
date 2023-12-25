@@ -3,8 +3,8 @@ import React from 'react';
 import Header from '../components/Header';
 import Navigation from '../components/Navigation';
 import Footer from '../components/common/footer';
-import TopicSelector from '../components/TopicSelector';
-import ContentDisplay from '../components/ContentDisplay';
+import EducationPage from '../components/EducationPage'
+
 
 function InvestmentEducation() {
   const [selectedTopic, setSelectedTopic] = React.useState(null);
@@ -17,9 +17,10 @@ function InvestmentEducation() {
     <div className="HomePage">
       <Header />
       <Navigation />
-      <h1>Education Options</h1>
-      <TopicSelector onTopicChange={handleTopicChange} />
-      <ContentDisplay topic={selectedTopic} />
+      <EducationPage/>
+      {/* Add some whitespace */}
+     
+      <div style={{ marginBottom: '17rem' }}></div>
       <Footer />
     </div>
   );

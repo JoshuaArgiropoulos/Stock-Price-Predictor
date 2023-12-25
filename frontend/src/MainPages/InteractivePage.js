@@ -11,6 +11,9 @@ function InteractivePage() {
       <div className="HomePage">
         <Header />
         <Navigation /> 
+        {/* Add some whitespace */}
+     
+      <div style={{ marginBottom: '8rem' }}></div>
         <Footer />
       </div>
     

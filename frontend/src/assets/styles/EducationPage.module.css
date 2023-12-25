@@ -1,0 +1,24 @@
+.homePage {
+  
+  align-items: center; /* Added to ensure content is centered horizontally */
+  text-align: center;
+}
+
+.title {
+  color: #2a2a2a;
+  margin: 20px 0;
+}
+
+.contentArea {
+  margin: 10px;
+  padding: 20px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+  .homePage {
+    padding: 10px;
+  }
+}

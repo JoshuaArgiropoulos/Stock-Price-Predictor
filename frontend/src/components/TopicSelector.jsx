@@ -1,5 +1,6 @@
 // TopicSelector.jsx
 import React from 'react';
+import '../assets/styles/TopicSelector.css'; 
 
 const TopicSelector = ({ onTopicChange }) => {
   const topics = [

@@ -1,0 +1,21 @@
+/* Styles for the content display container */
+.content-display {
+    margin: 20px; /* Adjust the margin as needed */
+    padding: 20px; /* Adjust the padding as needed */
+    border: 1px solid #ddd; /* A light border for the container */
+    border-radius: 8px; /* Rounded corners for the container */
+    background-color: #f9f9f9; /* A light background color */
+  }
+  
+  /* Styles for the heading */
+  .content-display h2 {
+    color: #333; /* Dark color for the text */
+    margin-bottom: 10px; /* Spacing between the title and content */
+  }
+  
+  /* Styles for the content paragraphs */
+  .content-display p {
+    color: #666; /* A slightly lighter color for the content text */
+    line-height: 1.6; /* Adjust the line height for better readability */
+    margin-bottom: 10px; /* Spacing between paragraphs */
+  }
