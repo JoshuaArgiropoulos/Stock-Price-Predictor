@@ -21,7 +21,15 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutUs/>} />
           <Route path="/stock-info" element={<Stocks />} />
+          
           <Route path="/investment" element={<InvestmentEducation />} />
+
+
+
+
+
+
+
           <Route path="/interactive-tools" element={<InteractivePage />} />
           <Route path="/Financial-News" element={<FinancialNews />} />
           <Route path="/SignOn" element={<SignOn />} />

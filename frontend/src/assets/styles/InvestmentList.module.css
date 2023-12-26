@@ -1,0 +1,48 @@
+/* InvestmentList.module.css */
+
+.investment-types {
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .hero-section {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .hero-section h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .hero-section p {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .intro-text {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .cta-container {
+    text-align: center;
+  }
+  
+  .learn-more-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .learn-more-link:hover {
+    background-color: #0056b3;
+  }

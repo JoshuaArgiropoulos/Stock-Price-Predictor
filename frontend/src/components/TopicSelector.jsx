@@ -4,17 +4,14 @@ import '../assets/styles/TopicSelector.css';
 
 const TopicSelector = ({ onTopicChange }) => {
   const topics = [
+    "Investment Basics",
     "Investment Types",
     "Account Types in Canada",
-    "Investment Basics",
     "Budgeting and Financial Planning",
     "Savings and Investments",
     "Credit Management",
     "Taxation",
-    "Retirement Planning",
-    "Insurance",
-    "Economic Concepts",
-    "Real-Life Examples and Case Studies"
+    "Retirement Planning"
   ];
 
   return (
