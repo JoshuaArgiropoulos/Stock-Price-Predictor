@@ -1,20 +1,15 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Updated import
 import Header from '../components/Header';
 import Navigation from '../components/Navigation';
-import HomeSection from '../components/HomeSection';
-import VisionSection from '../components/VisionSection';
-import ServiceBox from '../components/ServiceBox';
 import Footer from '../components/common/footer';
-import Blank from '../components/common/trial';
-import '../assets/styles/SignOn.css'
-
-// SignOn.js
-import React, { useState } from 'react';
+import '../assets/styles/SignOn.css';
 
 function SignOn() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [messages, setMessages] = useState([]);  // For flash messages
+  const [messages, setMessages] = useState([]);
+  const navigate = useNavigate(); // Updated hook
 
   // Handle form input changes
   const handleUsernameChange = (e) => setUsername(e.target.value);
@@ -32,16 +27,14 @@ function SignOn() {
 
       const data = await response.json();
       if (data.message) {
-        // Use the server's "message" field to display an alert
         setMessages([data.message]);
+        
+        if (data.message === "Login successful") {
+          navigate('/dashboard'); // Updated navigation
+        }
       } else if (data.messages) {
-        // If the response contains "messages" array, set the state with those messages
         setMessages(data.messages);
       }
-
-      // Additional logic for successful login or handling login errors
-      // ...
-
     } catch (error) {
       console.error('Error submitting form:', error);
     }

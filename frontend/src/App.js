@@ -9,9 +9,15 @@ import AboutUs from './MainPages/AboutUs';
 import Stocks from './MainPages/Stocks';
 import InteractivePage from './MainPages/InteractivePage';
 import InvestmentEducation from './MainPages/InvestmentEducation';
+import Dashboard from './MainPages/Dashboard'; 
+
+import PrivateRoute from './components/PrivateRoute'; 
+
+import { AuthProvider } from './components/AuthContext';
 
 function App() {
   return (
+    <AuthProvider>
     <Router>
       <div>
   
@@ -29,7 +35,8 @@ function App() {
 
 
 
-
+          {/* //<Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} /> */}
+          <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/interactive-tools" element={<InteractivePage />} />
           <Route path="/Financial-News" element={<FinancialNews />} />
           <Route path="/SignOn" element={<SignOn />} />
@@ -38,6 +45,7 @@ function App() {
         </Routes>
       </div>
     </Router>
+   </AuthProvider>
   );
 }
 
