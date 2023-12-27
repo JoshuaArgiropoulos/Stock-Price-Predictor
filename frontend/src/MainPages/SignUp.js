@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
+import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import Footer from '../components/common/footer';
 import '../assets/styles/SignOn.css'; 
@@ -15,11 +16,16 @@ function SignUp() {
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const handleConfirmPasswordChange = (e) => setConfirmPassword(e.target.value);
+  const [isSuccess, setIsSuccess] = useState(true); // New state to track success
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setMessages([]);  // Clear previous messages
+    setIsSuccess(true);  // Assume success until proven otherwise
+
     if (password !== confirmPassword) {
       setMessages(['Passwords do not match']);
+      setIsSuccess(false);
       return;
     }
 
@@ -31,14 +37,21 @@ function SignUp() {
       });
 
       const data = await response.json();
-      if (data.messages) {
-        setMessages(data.messages);
+
+      if (response.ok) {
+        // Handle success
+        setMessages([data.message || "Signup successful! Please log in."]);
+        setIsSuccess(true);
+        // Optionally, clear form or redirect user
       } else {
-        // Handle signup success, e.g., redirect to login page or a welcome page
+        // Handle errors
+        setMessages([data.message || "An error occurred during signup. Please try again."]);
+        setIsSuccess(false);
       }
     } catch (error) {
       console.error('Error during signup:', error);
       setMessages(['An error occurred during signup. Please try again.']);
+      setIsSuccess(false);
     }
   };
 
@@ -62,15 +75,19 @@ function SignUp() {
             <input type="password" value={password} onChange={handlePasswordChange} />
           </p>
           <p>
-            <label>Confirm Password</label>
-            <input type="password" value={confirmPassword} onChange={handleConfirmPasswordChange} />
+            <label htmlFor="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" value={confirmPassword} onChange={handleConfirmPasswordChange} />
           </p>
           <button type="submit">Sign Up</button>
         </form>
-        {messages.map((message, index) => (
-          <div key={index} className="alert alert-warning">{message}</div>
-        ))}
-        <p>Already have an account? <a href="/SignOn">Sign in here.</a></p>
+        <div className="messages">
+          {messages.map((message, index) => (
+            <div key={index} className={`alert ${isSuccess ? 'alert-success' : 'alert-warning'}`}>
+              {message}
+            </div>
+          ))}
+        </div>
+        <p>Already have an account? <Link to="/SignOn">Sign in here.</Link></p> {/* Use Link instead of <a> */}
       </section>
       <Footer />
     </div>

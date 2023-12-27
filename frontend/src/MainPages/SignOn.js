@@ -68,6 +68,7 @@ function SignOn() {
         ))}
 
         <p>If you don't have an account, <a className="signup-link" href="/SignUp">sign up</a>.</p>
+        
         {/* Add some whitespace */}
         <div style={{ marginBottom: '8rem' }}></div>
       </section>

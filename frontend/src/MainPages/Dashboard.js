@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from '../components/Header';
-import Navigation from '../components/Navigation';
+import DashHeader from '../Dashboard/DashHeader';
+import DashNav from '../Dashboard/DashNav';
 import Footer from '../components/common/footer';
 
 
@@ -10,8 +10,8 @@ function Dashboard() {
   return (
     
       <div className="HomePage">
-        <Header />
-        <Navigation />
+        <DashHeader />
+        <DashNav />
         {/* Add some whitespace */}
      
       <div style={{ marginBottom: '12rem' }}></div>
