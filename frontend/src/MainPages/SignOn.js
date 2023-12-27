@@ -4,12 +4,15 @@ import Header from '../components/Header';
 import Navigation from '../components/Navigation';
 import Footer from '../components/common/footer';
 import '../assets/styles/SignOn.css';
+import { useAuth } from '../components/AuthContext'; // Import useAuth hook
 
 function SignOn() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [messages, setMessages] = useState([]);
   const navigate = useNavigate(); // Updated hook
+  const { login } = useAuth(); // Destructure the login function from the context
+  
 
   // Handle form input changes
   const handleUsernameChange = (e) => setUsername(e.target.value);
@@ -30,6 +33,7 @@ function SignOn() {
         setMessages([data.message]);
         
         if (data.message === "Login successful") {
+          login(data.user); // Call the login function with user data
           navigate('/dashboard'); // Updated navigation
         }
       } else if (data.messages) {

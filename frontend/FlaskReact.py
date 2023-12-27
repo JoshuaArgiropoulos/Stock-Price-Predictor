@@ -51,26 +51,13 @@ def api_sign_up():
     db.session.commit()
 
     return jsonify({"message": "User registered successfully"}), 201
-
+#-----------------------------------------Login-------------------------
 @app.route('/api/SignOn', methods=['POST'])
 def api_sign_on():
     try:
         data = request.get_json()
         username = data.get('username')
         password = data.get('password')
-        print(f"Received data: username={username}, password={password}")
-
-        # Query all users from the User table
-        users = User.query.all()
-
-        # Loop through the users and print their information
-        for user in users:
-            print(f"User ID: {user.id}")
-            print(f"Username: {user.username}")
-            print(f"Email: {user.email}")
-            print(f"Password Hash: {user.password_hash}")
-            print(f"Is Active: {user.is_active}")
-            print("\n")  # Add some whitespace between users
 
         # Find the user by username
         user = User.query.filter_by(username=username).first()
@@ -78,15 +65,19 @@ def api_sign_on():
         if not user:
             return jsonify({"message": "User not found"}), 404
 
-        # Check if the provided password matches the stored password hash
         if not check_password_hash(user.password_hash, password):
             return jsonify({"message": "Invalid password"}), 401
 
         # Authentication successful
-        return jsonify({"message": "Login successful"}), 200
+        user_data = {
+            "id": user.id,
+            "username": user.username,
+            "email": user.email,
+            # Include other non-sensitive fields you might need
+        }
+        return jsonify({"message": "Login successful", "user": user_data}), 200
 
     except IntegrityError:
-        # Handle any database integrity errors
         db.session.rollback()
         return jsonify({"message": "An error occurred while processing your request"}), 500
 # -----------------------News API-------------------------------------------------
