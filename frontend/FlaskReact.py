@@ -8,6 +8,8 @@ from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
+from flask_session import Session
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
 app = Flask(__name__, static_folder='build', static_url_path='/')
 app.config.from_pyfile('config.py')
@@ -16,16 +18,23 @@ CORS(app)
 db = SQLAlchemy(app)
 mail = Mail(app)
 
+Session(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
+
 NEWS_API_KEY = app.config['NEWS_API_KEY']
 s = URLSafeTimedSerializer(app.config['SECRET_KEY'])
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(255))
     is_active = db.Column(db.Boolean, default=False)
+
+    def get_id(self):
+        return str(self.id)
 
 @app.route('/')
 def serve_react_app():
@@ -83,6 +92,7 @@ def api_sign_on():
         data = request.get_json()
         username = data.get('username')
         password = data.get('password')
+        
 
         # Find the user by username
         user = User.query.filter_by(username=username).first()
@@ -92,8 +102,11 @@ def api_sign_on():
 
         if not check_password_hash(user.password_hash, password):
             return jsonify({"message": "Invalid password"}), 401
-
+        # if not user.is_active:
+        #     return jsonify({"message": "Please confirm email"}), 403
+        
         # Authentication successful
+        login_user(user)
         user_data = {
             "id": user.id,
             "username": user.username,
@@ -105,6 +118,17 @@ def api_sign_on():
     except IntegrityError:
         db.session.rollback()
         return jsonify({"message": "An error occurred while processing your request"}), 500
+#------------------------------------------Logout-----------------------------------
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return jsonify({"message": "Logout successful"}), 200
+#----------------------------Dashboard---------------------------------------------
+@app.route('/dashboard')
+@login_required
+def dashboard():
+    return jsonify({"message": "Welcome to the dashboard!"})
 # -----------------------News API-------------------------------------------------
 @app.route('/api/financial-news')  
 def financial_news():
