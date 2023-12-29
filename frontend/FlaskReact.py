@@ -1,5 +1,5 @@
 import yfinance as yf
-from flask import Flask, jsonify, request, send_from_directory, session, flash, render_template
+from flask import Flask, jsonify, request, send_from_directory, session, flash, render_template, url_for
 import requests
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
@@ -30,7 +30,7 @@ class User(db.Model):
 @app.route('/')
 def serve_react_app():
     return send_from_directory(app.static_folder, 'index.html')
-#----------------------------------Authentication---------------------------------------------------------
+#----------------------------------SignUp---------------------------------------------------------
 
 @app.route('/api/SignUp', methods=['POST'])
 def api_sign_up():
@@ -49,8 +49,33 @@ def api_sign_up():
     new_user = User(username=username, email=email, password_hash=hashed_password)
     db.session.add(new_user)
     db.session.commit()
+    token = s.dumps(new_user.id, salt='email-confirm-salt')
+    send_confirmation_email(email, token)
 
     return jsonify({"message": "User registered successfully"}), 201
+
+#------------------------------------------Email---------------------------------------------------
+def send_confirmation_email(user_email, token):
+    confirm_url = url_for('confirm_email', token=token, _external=True)
+    msg = Message('Confirm Your Email',
+                  sender='joshua.argiropoulos@gmail.com',
+                  recipients=[user_email])
+    msg.body = f'Your confirmation link is: {confirm_url}'
+    mail.send(msg)
+#---------------------------------------Confirm Email-----------------------------------------------
+@app.route('/confirm_email/<token>')
+def confirm_email(token):
+    try:
+        user_id = s.loads(token, salt='email-confirm-salt', max_age=3600)  # 1-hour expiration
+        user = User.query.get(user_id)
+        if user:
+            user.is_active = True
+            db.session.commit()
+            return 'Email confirmed successfully!'
+        else:
+            return 'User not found'
+    except:
+        return 'The confirmation link is invalid or has expired.'
 #-----------------------------------------Login-------------------------
 @app.route('/api/SignOn', methods=['POST'])
 def api_sign_on():
@@ -131,6 +156,7 @@ def get_stock_info(ticker):
     except Exception as e:
         print(f"Error: {str(e)}")
         return jsonify({"error": str(e)}), 500
+
 
 #-----------------------------------------------------------------------------------------------
 if __name__ == '__main__':
