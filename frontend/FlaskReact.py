@@ -67,7 +67,7 @@ def api_sign_up():
 def send_confirmation_email(user_email, token):
     confirm_url = url_for('confirm_email', token=token, _external=True)
     msg = Message('Confirm Your Email',
-                  sender='joshua.argiropoulos@gmail.com',
+                  sender='ThriveOnFinance@gmail.com',
                   recipients=[user_email])
     msg.body = f'Your confirmation link is: {confirm_url}'
     mail.send(msg)
