@@ -33,7 +33,7 @@ function App() {
 
 
 
-
+          {/* <Route path="/dashboard" element={<Dashboard userData={userData} />} /> */}
           <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
           {/* <Route path="/Dashboard" element={<Dashboard />} /> */}
           <Route path="/interactive-tools" element={<InteractivePage />} />

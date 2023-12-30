@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Updated import
 import Header from '../components/Header';
 import Navigation from '../components/Navigation';
 import Footer from '../components/common/footer';
 import '../assets/styles/SignOn.css';
 import { useAuth } from '../components/AuthContext'; // Import useAuth hook
+import { useNavigate } from 'react-router-dom';
 
 function SignOn() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [messages, setMessages] = useState([]);
-  const navigate = useNavigate(); // Updated hook
-  const { login } = useAuth(); // Destructure the login function from the context
+  const navigate = useNavigate();
+  const { login } = useAuth();
+
   
 
   // Handle form input changes
@@ -34,7 +35,7 @@ function SignOn() {
         
         if (data.message === "Login successful") {
           login(data.user); // Call the login function with user data
-          navigate('/dashboard'); // Updated navigation
+          navigate('/dashboard', { state: { userData: data.user } }); // Pass userData as state
         }
       } else if (data.messages) {
         setMessages(data.messages);
