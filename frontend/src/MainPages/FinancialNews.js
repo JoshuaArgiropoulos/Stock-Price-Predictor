@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Navigation from '../components/Navigation';
 import Footer from '../components/common/footer';
-import '../assets/styles/FinancialNews.css'; // Corrected import statement
-import placeholderImage from '../assets/images/NewsPaper.png'; // Update the import path
+import '../assets/styles/FinancialNews.css'; 
+import placeholderImage from '../assets/images/NewsPaper.png'; 
 
 function formatDate(dateString) {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
