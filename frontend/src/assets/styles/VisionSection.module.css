@@ -1,0 +1,20 @@
+.vision-section {
+    padding: 2em;
+    text-align: center;
+    background-color: #f9f9f9; /* Light background for the section */
+    border-radius: 10px; /* Rounded corners for the section */
+    margin: 2em auto; /* Centering the section */
+    max-width: 800px; /* Maximum width */
+  }
+  
+  .vision-title {
+    color: #004080; /* Dark blue color for the title */
+    margin-bottom: 0.5em; /* Space below the title */
+    font-size: 2em; /* Larger font size for the title */
+  }
+  
+  .vision-text {
+    color: #333; /* Dark text for readability */
+    line-height: 1.6; /* Spacing between lines of text */
+    margin-bottom: 1em; /* Space below each paragraph */
+  }

@@ -1,0 +1,156 @@
+/* AboutMe.css */
+
+/* Container Styles */
+.aboutMeContainer {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.7;
+    color: #333;
+  }
+  
+  /* Header Styles */
+  .aboutMeContainer h1 {
+    color: #0066cc;
+    margin-bottom: 0.8em;
+    font-size: 2em;
+    border-bottom: 2px solid #efefef;
+    padding-bottom: 0.5em;
+  }
+  
+  /* Subheading Styles */
+  .aboutMeContainer h2 {
+    color: #0066cc;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+    border-bottom: 2px solid #efefef;
+    padding-bottom: 0.5em;
+  }
+  
+  /* Text Paragraph and List Styles */
+  .aboutMeContainer p,
+  .aboutMeContainer ul {
+    text-align: left;
+    margin-bottom: 1.5em;
+  }
+  
+  /* Link Styles */
+  .aboutMeContainer a {
+    color: #0066cc;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  /* Link Hover Styles */
+  .aboutMeContainer a:hover {
+    color: #5b9bdb;
+    text-decoration: underline;
+  }
+  
+  /* List Styles */
+  .aboutMeContainer ul {
+    list-style: disc inside;
+    padding-left: 1em;
+  }
+  
+  /* Remove List Bullet Styles */
+  .aboutMeContainer li::before {
+    content: normal;
+  }
+  
+  /* Responsive Design for Smaller Screens */
+  @media (max-width: 768px) {
+    .aboutMeContainer {
+      padding: 1.5rem;
+      margin: 1rem auto;
+    }
+    
+    .aboutMeContainer h1 {
+      font-size: 1.8em;
+    }
+  }
+
+  
+.profileImage {
+    max-width: 100%; /* Ensure the image fits within its container */
+    border-radius: 0; /* Create a rounded image (adjust as needed) */
+    margin-right: 20px; /* Add spacing to the right of the image */
+  }
+  
+  .smallerImage {
+    width: 300px; /* Set the desired width for the smaller image */
+    height: 300px; /* Set the desired height for the smaller image */
+  }
+
+  
+.aboutMeLayout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .aboutMeText {
+    flex: 1;
+    padding-right: 20px; /* Adjust spacing as needed */
+  }
+  
+  .aboutMeImage {
+    flex: 1;
+  }
+  
+  .aboutMeImage img {
+    width: 100%; /* Adjust size as needed */
+    border-radius: 0; /* Rounded image */
+    max-width: 300px; /* Adjust size as needed */
+    height: auto;
+  }
+
+  .aboutMeLayout {
+    display: flex;
+    justify-content: center; /* Centers children in the container */
+    align-items: center; /* Aligns children vertically */
+    padding: 20px;
+  }
+  
+  .aboutMeText {
+    flex: 1; /* Takes up 1 portion of the space */
+    padding-right: 20px; /* Adjusts spacing between text and image */
+  }
+  
+  .aboutMeImage {
+    flex: 1; /* Takes up 1 portion of the space */
+    order: 2; /* Ensures the image is positioned to the right */
+  }
+  
+  .aboutMeImage img {
+    width: 100%; /* Adjusts the size as needed */
+    max-width: 300px; /* Sets a maximum width for the image */
+    height: auto; /* Maintains the aspect ratio of the image */
+    border-radius: 10px; /* Creates a rounded image */
+  }
+  .centeredTitle {
+    text-align: center; /* Centers the text */
+  }
+  
+  /* Responsive Design for Smaller Screens */
+  @media (max-width: 768px) {
+    .aboutMeLayout {
+      flex-direction: column; /* Stacks the text and image vertically on smaller screens */
+    }
+  
+    .aboutMeImage {
+      order: 1; /* Puts the image above the text on smaller screens */
+      margin-bottom: 20px; /* Adds space between the image and text */
+    }
+  
+    .aboutMeText {
+      order: 2; /* Ensures the text is below the image on smaller screens */
+    }
+  }
