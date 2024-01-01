@@ -16,7 +16,7 @@ function DashNav() {
     <nav style={{ backgroundColor: '#0066cc', padding: '1em', textAlign: 'center', whiteSpace: 'nowrap' }}>
       <a href="/" className="nav-link" style={{ display: 'inline-block' }}>Home</a>
       {/* <DashDropdown/> */}
-      <a href="/about" className="nav-link" style={{ display: 'inline-block' }}>About Us</a>
+      <a href="/about" className="nav-link" style={{ display: 'inline-block' }}>About Me</a>
       <a href="/SignOn" className="nav-link" style={{ display: 'inline-block' }}>Profile</a>
     </nav>
   );
