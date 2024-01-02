@@ -26,7 +26,8 @@
   
   .ctaButton {
     padding: 10px 20px;
-    background-color: #004080; 
+    background-color: #004080;
+    text-decoration: none;
     color: white;
     border: none;
     border-radius: 5px;
