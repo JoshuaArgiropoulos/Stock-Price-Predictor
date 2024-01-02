@@ -1,0 +1,74 @@
+.homeSection {
+    display: flex;
+    flex-direction: row; /* Children side by side */
+    align-items: flex-start; /* Align to top */
+    justify-content: center;
+    padding: 2em;
+    background: #ffffff; /* White background */
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  }
+  
+  .imageContainer {
+    flex: 1;
+    padding: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .imageContainer:hover {
+    transform: translateY(-5px); /* subtle lift effect */
+  }
+  
+  .homeImage {
+    max-width: 500px;
+    height: 333px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+:root {
+  --primary-color: #004080;
+  --secondary-color: #f2f2f2; 
+  --text-color: #666;
+  --background-color: linear-gradient(135deg, #f0f0f0 40%, #ffffff 100%);
+}  
+
+.visionSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center; 
+  padding: 20px;
+  background: #ffffff;
+
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  height: 100%; 
+}
+.visionTitle {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-size: 2rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.visionText {
+  color: var(--text-color);
+  line-height: 1.6;
+  max-width: 600px; 
+  margin: 0 auto; 
+}
+.visionList {
+  list-style-type: none;
+  padding: 0; 
+  
+}
+
+@media (max-width: 768px) {
+  .visionTitle {
+    font-size: 1.5rem;
+  }
+}
+ 
+

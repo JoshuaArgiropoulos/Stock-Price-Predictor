@@ -1,16 +1,17 @@
 import React from 'react';
-import '../assets/styles/BaseStyles.css'; // Base styles
-import '../assets/styles/Section.css'; // Specific styles for sections
-import '../assets/styles/VisionSection.module.css'; // Dedicated styles for the VisionSection
+import styles from '../assets/styles/VisionSection.module.css';
 
 function VisionSection() {
   return (
-    <section id="Vision" className="vision-section">
-      <h2 className="vision-title">My Vision</h2>
-      <p className="vision-text">My vision is to be a beacon of empowerment, guiding individuals on a journey toward financial literacy and independence. I aspire to transform the landscape of personal finance by making it accessible, understandable, and actionable.</p>
-      <p className="vision-text">My commitment is to equip each person with the knowledge, tools, and confidence needed to navigate their financial journey successfully. Through personalized education, innovative resources, and a supportive community, I aim to demystify financial concepts, foster smart decision-making, and enable my clients to realize their full financial potential. I believe that a well-informed individual is the cornerstone of a healthy financial future, and I dedicate myself to igniting this knowledge in everyone I serve.</p>
-      
-    </section>
+    <section className={styles.visionSection}>
+      <div className={styles.textContent}>
+        <h3 className={styles.title}>Empowering Futures</h3>
+        <p>Embark on a transformative financial journey with ThriveOnFinance. We're dedicated to empowering your financial growth and stability.</p>
+        <p>Every dollar counts, and we understand its value. Let us help you maximize your financial potential, ensuring that every decision moves you closer to your goals. Discover how to make your money work harder for you.</p>
+        <button className={styles.ctaButton}>Learn More</button> 
+      </div>
+ 
+</section>
   );
 }
 

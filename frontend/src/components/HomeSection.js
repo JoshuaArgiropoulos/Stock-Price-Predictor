@@ -1,20 +1,23 @@
 import React from 'react';
-import imageSrc from '../assets/images/IMG_9820.JPG'; 
-import '../assets/styles/BaseStyles.css';
-import '../assets/styles/Home.css';
-import '../assets/styles/Section.css';
+import imageSrc from '../assets/images/IMG_9820.JPG';
+import styles from '../assets/styles/HomeSection.module.css';
 
 function HomeSection() {
   return (
-    <section id="home" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2em' }}>
-      <div>
-      <img src={imageSrc} alt="Your Image" style={{ maxWidth: '100%', height: 'auto', borderRadius: '20px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', marginRight: '40px', width: '500px', 
-            maxHeight: '333px'   }} />
+    <section id="home" className={styles.homeSection}>
+      <div className={styles.imageContainer}>
+        <img src={imageSrc} alt="Empowering Futures" className={styles.homeImage} />
       </div>
-      <div>
-        <h3 style={{ fontFamily: "'Style Script', sans-serif", color: '#004080', marginBottom: '10px' }}>Empowering Futures</h3>
-        <p>Transform your financial journey with ThriveOnFinance.</p>
-        <p>Every dollar counts, and we're here to help you make the most of it.</p>
+      <div className={styles.textContainer}>
+        <h2 className={styles.visionTitle}>My Vision</h2>
+        <ul className={styles.visionList}>
+          <li><strong>Empowerment:</strong> Guide towards financial literacy and independence.</li>
+          <li><strong>Transformation:</strong> Make personal finance accessible and actionable.</li>
+          <li><strong>Knowledge & Tools:</strong> Equip individuals for successful financial journeys.</li>
+          <li><strong>Education & Resources:</strong> Provide innovative means for smart decision-making.</li>
+          <li><strong>Community Support:</strong> Foster a network for growth and understanding.</li>
+          <li><strong>Dedication:</strong> Ignite knowledge and potential in every individual.</li>
+        </ul>
       </div>
     </section>
   );

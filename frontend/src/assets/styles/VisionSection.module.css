@@ -1,20 +1,50 @@
-.vision-section {
-    padding: 2em;
-    text-align: center;
-    background-color: #f9f9f9; /* Light background for the section */
-    border-radius: 10px; /* Rounded corners for the section */
-    margin: 2em auto; /* Centering the section */
-    max-width: 800px; /* Maximum width */
+:root {
+  --primary-color: #004080;
+  --secondary-color: #f2f2f2; /* New secondary color */
+  --text-color: #666;
+  --background-color: linear-gradient(135deg, #f0f0f0 40%, #ffffff 100%);
+}
+
+
+
+
+
+  .textContent {
+    flex: 2;
+    padding: 20px;
+    background: #ffffff; 
+    border-radius: 15px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
   }
   
-  .vision-title {
-    color: #004080; /* Dark blue color for the title */
-    margin-bottom: 0.5em; /* Space below the title */
-    font-size: 2em; /* Larger font size for the title */
+  .title {
+    font-family: 'Style Script', sans-serif;
+    color: #004080;
+    margin-bottom: 10px;
+    font-size: 2rem; 
   }
   
-  .vision-text {
-    color: #333; /* Dark text for readability */
-    line-height: 1.6; /* Spacing between lines of text */
-    margin-bottom: 1em; /* Space below each paragraph */
+  .ctaButton {
+    padding: 10px 20px;
+    background-color: #004080; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
   }
+  
+  .ctaButton:hover {
+    background-color: #003366; 
+  }
+  
+  @media (max-width: 768px) {
+    .homeSection {
+      flex-direction: column;
+    }
+  
+    .title {
+      font-size: 5vw;
+    }
+  }
+ 
