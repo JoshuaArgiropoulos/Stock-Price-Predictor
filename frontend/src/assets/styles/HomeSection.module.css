@@ -65,6 +65,16 @@
   
 }
 
+.textContainer {
+    flex: 1; /* Adjust as necessary */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Align text to the center horizontally */
+    justify-content: center; /* Align text to the center vertically */
+    padding: 20px;
+    text-align: center; /* Ensure the text is centered */
+  }
+
 @media (max-width: 768px) {
   .visionTitle {
     font-size: 1.5rem;
