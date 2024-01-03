@@ -28,6 +28,7 @@ function StockTable() {
   const [chartData, setChartData] = useState(null);
   const [error, setError] = useState(null);
   const [sinceInception, setSinceInception] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
    // useEffect for clearing the start date when 'Since Inception' is checked
    useEffect(() => {
@@ -39,6 +40,7 @@ function StockTable() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
+    setIsLoading(true);
 
     if (!ticker || (!sinceInception && !startDate) || !endDate) {
       setError("Please fill in all fields");
@@ -82,6 +84,7 @@ function StockTable() {
       if (responseData.error) {
         throw new Error(responseData.error);
       }
+      setIsLoading(false);
 
       // Extract date and closing price from the API response
       const dates = responseData.data.map((item) => item.Date);
@@ -131,6 +134,7 @@ function StockTable() {
     } catch (err) {
       setError(`Failed to fetch: ${err.message}`);
       setChartData(null);
+      setIsLoading(false);
       
     }
   };
@@ -138,58 +142,60 @@ function StockTable() {
 
  // console.log("Rendering, chartData is:", chartData);
 
-  return (
-    <div className="HomePage" style={{ textAlign: 'center' }}>
-      <div>
-        <h2>Stock Chart</h2>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Ticker:
-            <input
-              type="text"
-              value={ticker}
-              onChange={(e) => setTicker(e.target.value)}
-            />
-          </label>
-          <label>
-            Since Inception:
-            <input
-              type="checkbox"
-              checked={sinceInception}
-              onChange={() => setSinceInception(!sinceInception)}
-            />
-          </label>
-          <label>
-            Start Date:
-            <input
-              type="date"
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
-              disabled={sinceInception}
-            />
-          </label>
-          <label>
-            End Date:
-            <input
-              type="date"
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
-            />
-          </label>
-          <button type="submit">Fetch Data</button>
-        </form>
-      </div>
-
-      {error && <p>Error: {error}</p>}
-
-      {chartData && (
-        <div>
-          <Line data={chartData} />
-        </div>
-      )}
+ return (
+  <div className="HomePage" style={{ textAlign: 'center' }}>
+    <div>
+      <h2>Stock Chart</h2>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Ticker:
+          <input
+            type="text"
+            value={ticker}
+            onChange={(e) => setTicker(e.target.value)}
+          />
+        </label>
+        <label>
+          Since Inception:
+          <input
+            type="checkbox"
+            checked={sinceInception}
+            onChange={() => setSinceInception(!sinceInception)}
+          />
+        </label>
+        <label>
+          Start Date:
+          <input
+            type="date"
+            value={startDate}
+            onChange={(e) => setStartDate(e.target.value)}
+            disabled={sinceInception}
+          />
+        </label>
+        <label>
+          End Date:
+          <input
+            type="date"
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
+          />
+        </label>
+        <button type="submit">Fetch Data</button>
+      </form>
     </div>
-  );
-}
+
+    {error && <p>Error: {error}</p>}
+
+    {isLoading ? (
+      <p>Loading...</p> // Display this text when the data is being loaded
+    ) : chartData ? (
+      <div>
+        <Line data={chartData} /> 
+      </div>
+    ) : null}
+  </div>
+);
+    }
 
 export default StockTable;
 
