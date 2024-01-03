@@ -15,7 +15,7 @@ function Dashboard() {
     
       <div className="HomePage">
         <DashHeader />
-        <DashNav />
+        <DashNav user={userData}/>
         <DashWelcome user={userData} />
         {/* Add some whitespace */}
      

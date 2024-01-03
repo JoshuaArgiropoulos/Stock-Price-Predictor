@@ -3,8 +3,9 @@ import '../assets/styles/Dropdown.css';
 import '../assets/styles/BaseStyles.css';
 import '../assets/styles/Header.css';
 // import DashDropdown from './common/Dropdown.js';
+import { Link } from 'react-router-dom';
 
-function DashNav() {
+function DashNav({ user }) {
   const [dropdownActive, setDropdownActive] = useState(false);
 
   const toggleDropdown = () => {
@@ -13,12 +14,11 @@ function DashNav() {
   };
 
   return (
-    <nav style={{ backgroundColor: '#0066cc', padding: '1em', textAlign: 'center', whiteSpace: 'nowrap' }}>
-      <a href="/" className="nav-link" style={{ display: 'inline-block' }}>Home</a>
-      {/* <DashDropdown/> */}
-      <a href="/about" className="nav-link" style={{ display: 'inline-block' }}>About Me</a>
-      <a href="/SignOn" className="nav-link" style={{ display: 'inline-block' }}>Profile</a>
-      <a href="/logout" className="nav-link" style={{ display: 'inline-block' }}>Logout</a>
+    <nav style={{ /* styles */ }}>
+      <Link to="/" className="nav-link">Home</Link>
+      <Link to="/about" className="nav-link">About Me</Link>
+      <Link to={{ pathname: "/profile", state: { user: user } }} className="nav-link">Profile</Link>
+      <Link to="/logout" className="nav-link">Logout</Link>
     </nav>
   );
 }

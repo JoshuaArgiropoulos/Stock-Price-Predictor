@@ -35,6 +35,11 @@ class User(UserMixin, db.Model):
 
     def get_id(self):
         return str(self.id)
+#----------------------User loader---------------------------
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+#------------------App start------------------------
 
 @app.route('/')
 def serve_react_app():
@@ -124,6 +129,20 @@ def api_sign_on():
 def logout():
     logout_user()
     return jsonify({"message": "Logout successful"}), 200
+#-----------------------------------------Get User info ------------------------------
+@app.route('/api/user_profile', methods=['GET'])
+@login_required
+def get_user_profile():
+    user = current_user
+    if user:
+        user_data = {
+            'id': user.id,
+            'username': user.username,
+            'email': user.email,
+        }
+        return jsonify({'user': user_data}), 200
+    else:
+        return jsonify({'message': 'User not found'}), 404
 #----------------------------Dashboard---------------------------------------------
 @app.route('/dashboard')
 @login_required
