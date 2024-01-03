@@ -9,6 +9,7 @@ import Stocks from './MainPages/Stocks';
 import InteractivePage from './MainPages/InteractivePage';
 import InvestmentEducation from './MainPages/InvestmentEducation';
 import Dashboard from './MainPages/Dashboard'; 
+import Logout from './MainPages/Logout'; 
 
 import PrivateRoute from './components/PrivateRoute'; 
 
@@ -40,6 +41,7 @@ function App() {
           <Route path="/Financial-News" element={<FinancialNews />} />
           <Route path="/SignOn" element={<SignOn />} />
           <Route path="/SignUp" element={<SignUp />} />
+          <Route path="/logout" element={<Logout />} />
           {/* More routes can be added here */}
         </Routes>
       </div>

@@ -18,6 +18,7 @@ function DashNav() {
       {/* <DashDropdown/> */}
       <a href="/about" className="nav-link" style={{ display: 'inline-block' }}>About Me</a>
       <a href="/SignOn" className="nav-link" style={{ display: 'inline-block' }}>Profile</a>
+      <a href="/logout" className="nav-link" style={{ display: 'inline-block' }}>Logout</a>
     </nav>
   );
 }
