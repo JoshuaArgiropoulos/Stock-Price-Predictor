@@ -1,20 +1,20 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useAuth } from '../components/AuthContext'; // Import useAuth hook
 import DashNav from './DashNav';
 import DashHeader from './DashHeader';
-function UserProfile(userData) {
-  const location = useLocation();
-  const user = location.state?.user;  // Access user from the route's state
+import userInfo from './userInfo';
+
+function UserProfile() {
+  const { user } = useAuth(); // Access user data from the AuthContext
+
+  
 
   return (
-    <div className="user-profile">
+    <div>
       <DashHeader />
-        <DashNav user={userData}/>
-      <h1>User Information</h1>
-      <div>
-        <p>Username: {user?.username}</p> 
-        <p>Email: {user?.email}</p>
-      </div>
+      <DashNav user={user}/> {/* Pass user data to DashNav as prop */}
+      <userInfo/>
+      
     </div>
   );
 }

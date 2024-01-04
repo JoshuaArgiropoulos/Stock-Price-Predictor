@@ -5,18 +5,17 @@ import DashNav from '../Dashboard/DashNav';
 import Footer from '../components/common/footer';
 import DashWelcome from '../Dashboard/DashWelcome';
 import { useLocation } from 'react-router-dom'; // Import useLocation hook
+import { useAuth } from '../components/AuthContext';
 
 
 function Dashboard() {
-  // Use useLocation hook to access the state object
-  const location = useLocation();
-  const userData = location.state?.userData; // Access userData from state
+  const { user } = useAuth();
   return (
     
       <div className="HomePage">
         <DashHeader />
-        <DashNav user={userData}/>
-        <DashWelcome user={userData} />
+        <DashNav user={user}/>
+        <DashWelcome user={user} />
         {/* Add some whitespace */}
      
       <div style={{ marginBottom: '12rem' }}></div>

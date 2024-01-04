@@ -6,6 +6,7 @@ import '../assets/styles/SignOn.css';
 import { useAuth } from '../components/AuthContext'; // Import useAuth hook
 import { useNavigate } from 'react-router-dom';
 
+
 function SignOn() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -35,7 +36,7 @@ function SignOn() {
         
         if (data.message === "Login successful") {
           login(data.user); // Call the login function with user data
-          navigate('/dashboard', { state: { userData: data.user } }); // Pass userData as state
+          navigate('/dashboard'); // Pass userData as state
         }
       } else if (data.messages) {
         setMessages(data.messages);
