@@ -3,18 +3,49 @@ import '../assets/styles/ChangePasswordScreen.css';
 import DashNav from './DashNav';
 import DashHeader from './DashHeader';
 import Footer from '../components/common/footer';
+import { useAuth } from '../components/AuthContext'; // Import useAuth hook
 
-
-function ChangePasswordScreen() {
+function ChangePasswordScreen() { // Removed 'user' parameter
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
+  const { user } = useAuth(); 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Implement your password change logic here
-    console.log('Password changed to:', newPassword);
+
+    // Check if new password and confirm new password match
+    if (newPassword !== confirmNewPassword) {
+      alert("New passwords do not match!");
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/change_password', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          // Include other headers as needed
+        },
+        body: JSON.stringify({
+          username: user.username, // Include the username in the request
+          currentPassword: currentPassword,
+          newPassword: newPassword,
+        }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert(data.message); // or handle successful password change as needed
+      } else {
+        alert(data.message); // or handle errors as needed
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred while changing the password.');
+    }
   };
+
 
   return (
     <div>

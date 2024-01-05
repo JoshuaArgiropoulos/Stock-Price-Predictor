@@ -129,6 +129,25 @@ def api_sign_on():
 def logout():
     logout_user()
     return jsonify({"message": "Logout successful"}), 200
+
+#-------------------------------Change Password -------------------------------------------
+@app.route('/api/change_password', methods=['POST'])
+def change_password():
+    data = request.get_json()
+    username = data.get('username')  # Get the username from the request
+    current_password = data.get('currentPassword')
+    new_password = data.get('newPassword')
+
+    user = User.query.filter_by(username=username).first()  # Find the user by username
+
+    if user and check_password_hash(user.password_hash, current_password):
+        # If the current password is correct, update to the new password
+        user.password_hash = generate_password_hash(new_password)
+        db.session.commit()
+        return jsonify({"message": "Password changed successfully"}), 200
+    else:
+        # If the current password is incorrect, return an error
+        return jsonify({"message": "Current password is incorrect or user not found"}), 401
 #-----------------------------------------Get User info ------------------------------
 @app.route('/api/user_profile', methods=['GET'])
 @login_required
