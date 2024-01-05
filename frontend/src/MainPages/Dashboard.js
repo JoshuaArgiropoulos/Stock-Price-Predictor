@@ -18,7 +18,7 @@ function Dashboard() {
         <DashWelcome user={user} />
         {/* Add some whitespace */}
      
-      <div style={{ marginBottom: '12rem' }}></div>
+      <div style={{ marginBottom: '27rem' }}></div>
         <Footer />
       </div>
     

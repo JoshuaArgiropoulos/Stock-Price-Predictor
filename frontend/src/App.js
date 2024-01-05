@@ -11,6 +11,7 @@ import InvestmentEducation from './MainPages/InvestmentEducation';
 import Dashboard from './MainPages/Dashboard'; 
 import UserProfile from './Dashboard/UserProfile';
 import Logout from './MainPages/Logout'; 
+import ChangePasswordScreen from './Dashboard/ChangePasswordScreen';
 
 import PrivateRoute from './components/PrivateRoute'; 
 
@@ -32,10 +33,6 @@ function App() {
           <Route path="/investment" element={<InvestmentEducation />} />
 
 
-
-
-
-          {/* <Route path="/dashboard" element={<Dashboard userData={userData} />} /> */}
           <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
           {/* <Route path="/Dashboard" element={<Dashboard />} /> */}
           <Route path="/interactive-tools" element={<InteractivePage />} />
@@ -43,7 +40,8 @@ function App() {
           <Route path="/SignOn" element={<SignOn />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/logout" element={<Logout />} />
-          <Route path="/profile" element={<UserProfile />} />
+          <Route path="/profile" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
+          <Route path="/change-password" element={<ChangePasswordScreen />} />
           {/* More routes can be added here */}
         </Routes>
       </div>
