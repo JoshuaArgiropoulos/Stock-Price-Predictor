@@ -25,10 +25,10 @@ function ChangePasswordScreen() { // Removed 'user' parameter
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          // Include other headers as needed
+          
         },
         body: JSON.stringify({
-          username: user.username, // Include the username in the request
+          username: user.username, 
           currentPassword: currentPassword,
           newPassword: newPassword,
         }),
