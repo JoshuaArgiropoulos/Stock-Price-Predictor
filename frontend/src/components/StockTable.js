@@ -1,7 +1,6 @@
 import React, { useState, useEffect} from 'react';
 
-// Define the API URL from the environment variable
-const API_URL = process.env.REACT_APP_API_URL;
+
 
 import { Line } from 'react-chartjs-2';
 import {
@@ -24,7 +23,8 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-
+// Define the API URL from the environment variable
+const API_URL = process.env.REACT_APP_API_URL;
 function StockTable() {
   const [ticker, setTicker] = useState('');
   const [startDate, setStartDate] = useState('');
