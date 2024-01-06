@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../assets/styles/Dropdown.css'; 
 import '../assets/styles/BaseStyles.css';
 import '../assets/styles/Header.css';
