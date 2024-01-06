@@ -1,51 +1,59 @@
 import yfinance as yf
-from flask import Flask, jsonify, request, send_from_directory, session, flash, render_template, url_for
+from flask import Flask, jsonify, request, send_from_directory, render_template, url_for
 import requests
 from flask_cors import CORS
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.exc import IntegrityError
 from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
-from flask_session import Session
-from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+import firebase_admin
+from firebase_admin import credentials, firestore
 
 app = Flask(__name__, static_folder='build', static_url_path='/')
 app.config.from_pyfile('config.py')
 CORS(app)
 
-db = SQLAlchemy(app)
+# Get the absolute path of the script
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Create the full path to the credentials file
+cred_path = os.path.join(script_dir, 'thrive-on-finance-firebase-adminsdk-k4n82-ef12d6d0f5.json')
+
+# Use the relative path for the credentials
+cred = credentials.Certificate(cred_path)
+firebase_admin.initialize_app(cred)
+
+# Now you can create a Firestore client
+db = firestore.client()
+
 mail = Mail(app)
 
-Session(app)
-login_manager = LoginManager()
-login_manager.init_app(app)
+# Session(app)
+# login_manager = LoginManager()
+# login_manager.init_app(app)
 
 NEWS_API_KEY = app.config['NEWS_API_KEY']
 s = URLSafeTimedSerializer(app.config['SECRET_KEY'])
 
-class User(UserMixin, db.Model):
-    __tablename__ = 'users'
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password_hash = db.Column(db.String(255))
-    is_active = db.Column(db.Boolean, default=False)
+class User:
+    def __init__(self, username, email, password_hash, is_active=False):
+        self.username = username
+        self.email = email
+        self.password_hash = password_hash
+        self.is_active = is_active
 
     def get_id(self):
         return str(self.id)
 #----------------------User loader---------------------------
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
+# @login_manager.user_loader
+# def load_user(user_id):
+#     return User.query.get(int(user_id))
 #------------------App start------------------------
 
 @app.route('/')
 def serve_react_app():
     return send_from_directory(app.static_folder, 'index.html')
 #----------------------------------SignUp---------------------------------------------------------
-
 @app.route('/api/SignUp', methods=['POST'])
 def api_sign_up():
     data = request.get_json()
@@ -53,17 +61,17 @@ def api_sign_up():
     email = data.get('email')
     password = data.get('password')
 
-    existing_user_by_username = User.query.filter_by(username=username).first()
-    existing_user_by_email = User.query.filter_by(email=email).first()
+    users_collection = db.collection('users')
+    existing_user_by_username = users_collection.where('username', '==', username).get()
+    existing_user_by_email = users_collection.where('email', '==', email).get()
 
-    if existing_user_by_username or existing_user_by_email:
+    if any(existing_user_by_username) or any(existing_user_by_email):
         return jsonify({"message": "User with given username or email already exists"}), 409
 
     hashed_password = generate_password_hash(password)
     new_user = User(username=username, email=email, password_hash=hashed_password)
-    db.session.add(new_user)
-    db.session.commit()
-    token = s.dumps(new_user.id, salt='email-confirm-salt')
+    users_collection.add(new_user.__dict__)
+    token = s.dumps(email, salt='email-confirm-salt')
     send_confirmation_email(email, token)
 
     return jsonify({"message": "User registered successfully"}), 201
@@ -80,11 +88,15 @@ def send_confirmation_email(user_email, token):
 @app.route('/confirm_email/<token>')
 def confirm_email(token):
     try:
-        user_id = s.loads(token, salt='email-confirm-salt', max_age=3600)  # 1-hour expiration
-        user = User.query.get(user_id)
-        if user:
-            user.is_active = True
-            db.session.commit()
+        user_email = s.loads(token, salt='email-confirm-salt', max_age=3600)  # 1-hour expiration
+
+        # Query Firestore for the user with the given email
+        users_collection = db.collection('users')
+        user_document = users_collection.where('email', '==', user_email).get()
+
+        if user_document:
+            user_ref = users_collection.document(user_document[0].id)
+            user_ref.update({'is_active': True})
             return 'Email confirmed successfully!'
         else:
             return 'User not found'
@@ -93,39 +105,27 @@ def confirm_email(token):
 #-----------------------------------------Login-------------------------
 @app.route('/api/SignOn', methods=['POST'])
 def api_sign_on():
-    try:
-        data = request.get_json()
-        username = data.get('username')
-        password = data.get('password')
-        
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
 
-        # Find the user by username
-        user = User.query.filter_by(username=username).first()
+    users_collection = db.collection('users')
+    user_document = users_collection.where('username', '==', username).get()
 
-        if not user:
-            return jsonify({"message": "User not found"}), 404
+    if not user_document:
+        return jsonify({"message": "User not found"}), 404
 
-        if not check_password_hash(user.password_hash, password):
-            return jsonify({"message": "Invalid password"}), 401
-        # if not user.is_active:
-        #     return jsonify({"message": "Please confirm email"}), 403
-        
-        # Authentication successful
-        login_user(user)
-        user_data = {
-            "id": user.id,
-            "username": user.username,
-            "email": user.email,
-            # Include other non-sensitive fields you might need
-        }
-        return jsonify({"message": "Login successful", "user": user_data}), 200
+    user_data = user_document[0].to_dict()
+    if not check_password_hash(user_data['password_hash'], password):
+        return jsonify({"message": "Invalid password"}), 401
 
-    except IntegrityError:
-        db.session.rollback()
-        return jsonify({"message": "An error occurred while processing your request"}), 500
+    # Assuming you handle sessions and logins in another way with Firebase
+    # login_user(user)
+
+    return jsonify({"message": "Login successful", "user": user_data}), 200
 #------------------------------------------Logout-----------------------------------
 @app.route('/logout')
-@login_required
+# @login_required
 def logout():
     logout_user()
     return jsonify({"message": "Logout successful"}), 200
@@ -134,23 +134,28 @@ def logout():
 @app.route('/api/change_password', methods=['POST'])
 def change_password():
     data = request.get_json()
-    username = data.get('username')  # Get the username from the request
+    username = data.get('username')
     current_password = data.get('currentPassword')
     new_password = data.get('newPassword')
 
-    user = User.query.filter_by(username=username).first()  # Find the user by username
+    users_collection = db.collection('users')
+    user_document = users_collection.where('username', '==', username).get()
 
-    if user and check_password_hash(user.password_hash, current_password):
-        # If the current password is correct, update to the new password
-        user.password_hash = generate_password_hash(new_password)
-        db.session.commit()
-        return jsonify({"message": "Password changed successfully"}), 200
+    if user_document:
+        user_data = user_document[0].to_dict()
+        user_ref = users_collection.document(user_document[0].id)
+
+        if check_password_hash(user_data['password_hash'], current_password):
+            new_hashed_password = generate_password_hash(new_password)
+            user_ref.update({'password_hash': new_hashed_password})
+            return jsonify({"message": "Password changed successfully"}), 200
+        else:
+            return jsonify({"message": "Current password is incorrect"}), 401
     else:
-        # If the current password is incorrect, return an error
-        return jsonify({"message": "Current password is incorrect or user not found"}), 401
+        return jsonify({"message": "User not found"}), 404
 #-----------------------------------------Get User info ------------------------------
 @app.route('/api/user_profile', methods=['GET'])
-@login_required
+# @login_required
 def get_user_profile():
     user = current_user
     if user:
@@ -164,7 +169,7 @@ def get_user_profile():
         return jsonify({'message': 'User not found'}), 404
 #----------------------------Dashboard---------------------------------------------
 @app.route('/dashboard')
-@login_required
+# @login_required
 def dashboard():
     return jsonify({"message": "Welcome to the dashboard!"})
 # -----------------------News API-------------------------------------------------
@@ -222,7 +227,7 @@ def get_stock_info(ticker):
 
 #-----------------------------------------------------------------------------------------------
 if __name__ == '__main__':
-    with app.app_context():
-        # Create tables for our models
-        db.create_all()
+    # with app.app_context():
+    #     # Create tables for our models
+    #     db.create_all()
     app.run(debug=True)
