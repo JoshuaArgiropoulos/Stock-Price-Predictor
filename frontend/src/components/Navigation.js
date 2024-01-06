@@ -5,12 +5,12 @@ import '../assets/styles/Header.css';
 import Dropdown from './common/Dropdown.js';
 
 function Navigation() {
-  const [dropdownActive, setDropdownActive] = useState(false);
+  // const [dropdownActive, setDropdownActive] = useState(false);
 
-  const toggleDropdown = () => {
-    setDropdownActive(!dropdownActive);
+  // const toggleDropdown = () => {
+  //   setDropdownActive(!dropdownActive);
     
-  };
+  // };
 
   return (
     <nav style={{ backgroundColor: '#0066cc', padding: '1em', textAlign: 'center', whiteSpace: 'nowrap' }}>

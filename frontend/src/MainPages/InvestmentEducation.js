@@ -7,11 +7,11 @@ import EducationPage from '../components/EducationPage'
 
 
 function InvestmentEducation() {
-  const [selectedTopic, setSelectedTopic] = React.useState(null);
+  // const [selectedTopic, setSelectedTopic] = React.useState(null);
 
-  const handleTopicChange = (topic) => {
-    setSelectedTopic(topic);
-  };
+  // // const handleTopicChange = (topic) => {
+  // //   setSelectedTopic(topic);
+  // // };
 
   return (
     <div className="HomePage">

@@ -5,7 +5,7 @@ import DashHeader from './DashHeader';
 import UserInfo from './userInfo';
 import Footer from '../components/common/footer';
 function UserProfile() {
-  const { user } = useAuth(); // Access user data from the AuthContext
+  // const { user } = useAuth(); // Access user data from the AuthContext
 
   
 
