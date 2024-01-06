@@ -1,0 +1,2 @@
+runtime: python311  # Ensure this matches your Python version
+entrypoint: waitress -b :$PORT FlaskReact:app  # Adjust if your app instance or file name differs

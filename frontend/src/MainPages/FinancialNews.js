@@ -5,6 +5,9 @@ import Footer from '../components/common/footer';
 import '../assets/styles/FinancialNews.css'; 
 import placeholderImage from '../assets/images/NewsPaper.png'; 
 
+// Define the API URL from the environment variable
+const API_URL = process.env.REACT_APP_API_URL;
+
 function formatDate(dateString) {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
   return new Date(dateString).toLocaleDateString(undefined, options);
@@ -14,7 +17,7 @@ function FinancialNews() {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    fetch('/api/financial-news')
+    fetch(`${API_URL}/api/financial-news`)
       .then(response => response.json())
       .then(data => setArticles(data))
       .catch(error => console.error('Error fetching financial news:', error));

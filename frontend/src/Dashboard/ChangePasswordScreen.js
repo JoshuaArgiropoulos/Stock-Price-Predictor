@@ -5,6 +5,9 @@ import DashHeader from './DashHeader';
 import Footer from '../components/common/footer';
 import { useAuth } from '../components/AuthContext'; // Import useAuth hook
 
+// Define the API URL from the environment variable
+const API_URL = process.env.REACT_APP_API_URL;
+
 function ChangePasswordScreen() { // Removed 'user' parameter
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -21,7 +24,7 @@ function ChangePasswordScreen() { // Removed 'user' parameter
     }
 
     try {
-      const response = await fetch('/api/change_password', {
+      const response = await fetch(`${API_URL}/api/change_password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,4 +1,8 @@
 import React, { useState, useEffect} from 'react';
+
+// Define the API URL from the environment variable
+const API_URL = process.env.REACT_APP_API_URL;
+
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -68,7 +72,7 @@ function StockTable() {
     const effectiveStartDate = startDate;
 
     try {
-      const response = await fetch(`/api/stock-info/${ticker}?start_date=${effectiveStartDate}&end_date=${endDate}`);
+      const response = await fetch(`${API_URL}/api/stock-info/${ticker}?start_date=${effectiveStartDate}&end_date=${endDate}`);
       if (response.status === 404) {
         setError("Stock not found");
         setChartData(null);

@@ -6,6 +6,8 @@ import '../assets/styles/SignOn.css';
 import { useAuth } from '../components/AuthContext'; // Import useAuth hook
 import { useNavigate } from 'react-router-dom';
 
+// Define the API URL from the environment variable
+const API_URL = process.env.REACT_APP_API_URL;
 
 function SignOn() {
   const [username, setUsername] = useState('');
@@ -24,7 +26,7 @@ function SignOn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/SignOn', {
+      const response = await fetch(`${API_URL}/api/SignOn`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),

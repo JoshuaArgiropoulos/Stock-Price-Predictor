@@ -5,6 +5,8 @@ import Navigation from '../components/Navigation';
 import Footer from '../components/common/footer';
 import '../assets/styles/SignOn.css'; 
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function SignUp() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -30,7 +32,7 @@ function SignUp() {
     }
 
     try {
-      const response = await fetch('/api/SignUp', {
+      const response = await fetch(`${API_URL}/api/SignUp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, email, password }),
