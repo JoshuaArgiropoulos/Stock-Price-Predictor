@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuth } from '../components/AuthContext'; // Import useAuth hook
+// import { useAuth } from '../components/AuthContext'; // Import useAuth hook
 import DashNav from './DashNav';
 import DashHeader from './DashHeader';
 import UserInfo from './userInfo';

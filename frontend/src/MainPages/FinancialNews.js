@@ -32,7 +32,7 @@ function FinancialNews() {
               <div className="news-image">
                 <img
                   src={article.urlToImage ? article.urlToImage : placeholderImage}
-                  alt={`${article.title} Image`}
+                  alt={article.title} 
                 />
               </div>
               <div className="news-content">

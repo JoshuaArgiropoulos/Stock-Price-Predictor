@@ -1,10 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import DashHeader from '../Dashboard/DashHeader';
 import DashNav from '../Dashboard/DashNav';
 import Footer from '../components/common/footer';
 import DashWelcome from '../Dashboard/DashWelcome';
-import { useLocation } from 'react-router-dom'; // Import useLocation hook
+// import { useLocation } from 'react-router-dom'; // Import useLocation hook
 import { useAuth } from '../components/AuthContext';
 
 

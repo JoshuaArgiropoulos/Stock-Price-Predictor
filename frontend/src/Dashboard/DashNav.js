@@ -6,7 +6,7 @@ import '../assets/styles/Header.css';
 import { Link } from 'react-router-dom';
 
 function DashNav({ user }) {
-  const [dropdownActive, setDropdownActive] = useState(false);
+  // const [dropdownActive, setDropdownActive] = useState(false);
 
   // const toggleDropdown = () => {
   //   setDropdownActive(!dropdownActive);
