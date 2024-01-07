@@ -1,6 +1,5 @@
 // ForgotPassword.jsx
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Navigation from '../components/Navigation';
 import '../assets/styles/SignOn.css';
@@ -9,7 +8,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 function ForgotPassword() {
   const [email, setEmail] = useState('');
-  const navigate = useNavigate();
+  
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState('');
 
