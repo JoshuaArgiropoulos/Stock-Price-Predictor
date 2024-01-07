@@ -9,8 +9,9 @@ function Logout() {
       <div className="logout-confirmation">
         <Header/>
         <Navigation/>
+        <div style={{ marginTop: '80px' }}>
         <LogoutText/>
-        
+        </div>
       </div>
     );
   }

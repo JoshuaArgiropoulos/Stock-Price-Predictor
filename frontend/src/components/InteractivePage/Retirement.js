@@ -1,12 +1,12 @@
 import React from 'react';
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from '../components/Header';
-import Navigation from '../components/Navigation';
-import ComingSoonButton from '../components/common/ComingSoonButton';
+import Header from '../Header';
+import Navigation from '../Navigation';
+import ComingSoonButton from '../common/ComingSoonButton';
 
 
 
-function InteractivePage() {
+function Retirement() {
   return (
     
       <div className="HomePage">
@@ -19,4 +19,4 @@ function InteractivePage() {
     
   );
 }
-export default InteractivePage;
+export default Retirement;

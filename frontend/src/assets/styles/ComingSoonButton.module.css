@@ -1,0 +1,34 @@
+.stamped-section {
+  background-color: #fff;
+  display: flex; /* Use flex display to center vertically and horizontally */
+  flex-direction: column; /* Stack content vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  min-height: 200px; /* Set a minimum height to control the size */
+  padding: 0px;
+  font-size: 24px;
+  opacity: 0.8;
+  position: relative;
+  width: 40%;
+
+  border: 2px solid #333;
+  border-radius: 10px;
+  
+
+  
+  
+  left: 30%;
+  
+}
+
+.stamped-content {
+  text-align: center;
+}
+
+.stamped-section:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  
+}
+.section-container {
+  padding-top: 80px; /* Adjust this value to add space above the stamped section */
+}

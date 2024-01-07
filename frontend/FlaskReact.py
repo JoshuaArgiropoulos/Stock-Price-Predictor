@@ -14,12 +14,13 @@ app.config.from_pyfile('config.py')
 #--------------------------------------------------------------------------------------------------
 #FOR PROD
 
-CORS(app, resources={r"/api/*": {"origins": "https://thriveonfinance.netlify.app"}})
-REACT_APP_FRONTEND_URL = "https://thriveonfinance.netlify.app"
+# CORS(app, resources={r"/api/*": {"origins": "https://thriveonfinance.netlify.app"}})
+# REACT_APP_FRONTEND_URL = "https://thriveonfinance.netlify.app"
+
 #FOR LOCAL
 
-# CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
-# REACT_APP_FRONTEND_URL = "http://localhost:3000"
+CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+REACT_APP_FRONTEND_URL = "http://localhost:3000"
 #---------------------------------------------------------------------------------------------------
 
 # Get the absolute path of the script
