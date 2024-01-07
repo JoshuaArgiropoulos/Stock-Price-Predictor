@@ -11,7 +11,8 @@ from firebase_admin import credentials, firestore
 
 app = Flask(__name__, static_folder='build', static_url_path='/')
 app.config.from_pyfile('config.py')
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "https://thriveonfinance.netlify.app"}})
+
 
 # Get the absolute path of the script
 script_dir = os.path.dirname(os.path.abspath(__file__))

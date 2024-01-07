@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../assets/styles/ChangePasswordScreen.css';
 import DashNav from './DashNav';
 import DashHeader from './DashHeader';
-import Footer from '../components/common/footer';
+
 import { useAuth } from '../components/AuthContext'; // Import useAuth hook
 
 // Define the API URL from the environment variable
@@ -92,9 +92,7 @@ function ChangePasswordScreen() { // Removed 'user' parameter
         </button>
       </form>
 
-      <div style={{ marginBottom: '6rem' }}></div>
-      
-      <Footer/>
+     
     </div>
 
       

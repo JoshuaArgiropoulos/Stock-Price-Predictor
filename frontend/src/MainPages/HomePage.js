@@ -5,7 +5,7 @@ import Navigation from '../components/Navigation';
 import HomeSection from '../components/HomeSection';
 import VisionSection from '../components/VisionSection';
 import ServiceBox from '../components/ServiceBox';
-import Footer from '../components/common/footer';
+
 
 
 
@@ -23,7 +23,7 @@ function HomePage() {
           <ServiceBox title="Financial Education" link="/investment" description="Master the art of investing with our comprehensive education services. Understand the fundamentals, explore different investment types, and stay ahead with market insights." />
           <ServiceBox title="Stock Information" link="/stock-info" description="Explore historical information and predictions for top stocks, including fanng companies, through advanced machine learning techniques." />
         </section>  
-        <Footer />
+        
       </div>
     
   );

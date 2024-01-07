@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Navigation from '../components/Navigation';
-import Footer from '../components/common/footer';
+
 import '../assets/styles/SignOn.css';
 import { useAuth } from '../components/AuthContext'; // Import useAuth hook
 import { useNavigate } from 'react-router-dom';
@@ -74,9 +74,9 @@ function SignOn() {
         <p>If you don't have an account, <a className="signup-link" href="/SignUp">sign up</a>.</p>
         
         {/* Add some whitespace */}
-        <div style={{ marginBottom: '8rem' }}></div>
+        
       </section>
-      <Footer/>
+      
     </div>
   );
 }

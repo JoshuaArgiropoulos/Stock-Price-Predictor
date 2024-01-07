@@ -2,7 +2,7 @@ import React from 'react';
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from '../components/Header';
 import Navigation from '../components/Navigation';
-import Footer from '../components/common/footer';
+
 import ContactIcons from '../components/ContactIcons';
 import styles from '../assets/styles/AboutMe.module.css';
 import profileImage from '../assets/images/About.jpg'; 
@@ -70,7 +70,7 @@ const AboutMe = () => {
         <div style={{ marginBottom: '2rem' }}></div>
       </div>
       
-      <Footer />
+      
     </div>
   );
 }

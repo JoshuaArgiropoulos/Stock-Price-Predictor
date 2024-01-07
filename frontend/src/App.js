@@ -12,6 +12,8 @@ import Dashboard from './MainPages/Dashboard';
 import UserProfile from './Dashboard/UserProfile';
 import Logout from './MainPages/Logout'; 
 import ChangePasswordScreen from './Dashboard/ChangePasswordScreen';
+import './assets/styles/FooterToBot.css';
+import Footer from './components/common/footer';
 
 import PrivateRoute from './components/PrivateRoute'; 
 
@@ -21,7 +23,7 @@ function App() {
   return (
     <AuthProvider>
     <Router>
-      <div>
+    <div className="app-content">
   
 
         {/* Define Routes */}
@@ -45,6 +47,7 @@ function App() {
           {/* More routes can be added here */}
         </Routes>
       </div>
+      <Footer />
     </Router>
    </AuthProvider>
   );

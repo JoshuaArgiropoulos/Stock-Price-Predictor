@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Navigation from '../components/Navigation';
-import Footer from '../components/common/footer';
+
 import '../assets/styles/FinancialNews.css'; 
 import placeholderImage from '../assets/images/NewsPaper.png'; 
 
@@ -52,7 +52,7 @@ function FinancialNews() {
           ))}
         </div>
       </section>
-      <Footer />
+     
     </div>
   );
 }

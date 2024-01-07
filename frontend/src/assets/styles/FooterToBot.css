@@ -1,0 +1,14 @@
+.app-content {
+    min-height: calc(100vh - 2px); /* Adjust [Footer Height] */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .footer {
+    margin-top: auto; /* This will push the footer to the bottom */
+    color: white;
+    background-color: #002855;
+    text-align: center;
+    padding: 2em; /* This adds to the height, so account for it in [Footer Height] */
+    margin: 0;
+  }

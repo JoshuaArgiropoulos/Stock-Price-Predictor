@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
-import Footer from '../components/common/footer';
+
 import '../assets/styles/SignOn.css'; 
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -91,7 +91,7 @@ function SignUp() {
         </div>
         <p>Already have an account? <Link to="/SignOn">Sign in here.</Link></p> {/* Use Link instead of <a> */}
       </section>
-      <Footer />
+      
     </div>
   );
 }
