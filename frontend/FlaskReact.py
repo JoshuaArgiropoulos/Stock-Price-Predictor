@@ -11,7 +11,7 @@ from firebase_admin import credentials, firestore
 
 app = Flask(__name__, static_folder='build', static_url_path='/')
 app.config.from_pyfile('config.py')
-
+#--------------------------------------------------------------------------------------------------
 #FOR PROD
 
 # CORS(app, resources={r"/api/*": {"origins": "https://thriveonfinance.netlify.app"}})
@@ -19,7 +19,7 @@ app.config.from_pyfile('config.py')
 #FOR LOCAL
 
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
-
+#---------------------------------------------------------------------------------------------------
 
 # Get the absolute path of the script
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -33,7 +33,6 @@ firebase_admin.initialize_app(cred)
 
 # Now you can create a Firestore client
 db = firestore.client()
-
 mail = Mail(app)
 
 # Session(app)
@@ -126,18 +125,64 @@ def api_sign_on():
     user_data = user_document[0].to_dict()
     if not check_password_hash(user_data['password_hash'], password):
         return jsonify({"message": "Invalid password"}), 401
+    is_active = user_data.get('is_active')
+    if is_active == False:
+        return jsonify({"message": "Please verify email"}), 401
 
-    # Assuming you handle sessions and logins in another way with Firebase
-    # login_user(user)
-
+    print(f"Username: {username}, is_active status: {is_active}")
     return jsonify({"message": "Login successful", "user": user_data}), 200
 #------------------------------------------Logout-----------------------------------
 @app.route('/logout')
 # @login_required
 def logout():
-    logout_user()
+    # logout_user()
     return jsonify({"message": "Logout successful"}), 200
+#-------------------------------Reset Password-----------------------------------------
+def send_reset_email(user_email, token):
+    reset_url = url_for('reset_password', token=token, _external=True)
+    msg = Message('Reset Your Password',
+                  sender=app.config['MAIL_USERNAME'],
+                  recipients=[user_email])
+    msg.body = f'Your link to reset password is: {reset_url}'
+    mail.send(msg)
+#----------------------------------------------------------------------------------
+@app.route('/api/reset_password/<token>', methods=['POST'])
+def reset_password(token):
+    data = request.get_json()
+    new_password = data.get('password')
 
+    try:
+        email = s.loads(token, salt='reset-password-salt', max_age=3600)  # 1-hour expiration
+        users_collection = db.collection('users')
+        user_document = users_collection.where('email', '==', email).get()
+
+        if user_document:
+            user_ref = users_collection.document(user_document[0].id)
+            new_hashed_password = generate_password_hash(new_password)
+            user_ref.update({'password_hash': new_hashed_password})
+            return jsonify({"message": "Password has been reset"}), 200
+        else:
+            return jsonify({"message": "User not found"}), 404
+    except:
+        return jsonify({"message": "The reset link is invalid or has expired"}), 401
+#-------------------------Forgot password
+@app.route('/api/forgot-password', methods=['POST'])
+def request_reset():
+    data = request.get_json()
+    email = data.get('email')
+
+    users_collection = db.collection('users')
+    user_document = users_collection.where('email', '==', email).get()
+
+    if not user_document:
+        return jsonify({"message": "Email not found"}), 404
+
+    user_data = user_document[0].to_dict()
+    token = s.dumps(user_data['email'], salt='reset-password-salt')
+
+    send_reset_email(user_data['email'], token)
+
+    return jsonify({"message": "Reset email sent"}), 200
 #-------------------------------Change Password -------------------------------------------
 @app.route('/api/change_password', methods=['POST'])
 def change_password():

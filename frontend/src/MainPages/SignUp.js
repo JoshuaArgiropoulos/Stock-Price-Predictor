@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
-
+import { useNavigate } from 'react-router-dom';
 import '../assets/styles/SignOn.css'; 
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -13,6 +13,7 @@ function SignUp() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [messages, setMessages] = useState([]);
+  const navigate = useNavigate();
 
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
@@ -44,6 +45,7 @@ function SignUp() {
         // Handle success
         setMessages([data.message || "Signup successful! Please log in."]);
         setIsSuccess(true);
+        navigate('/SignOn');
         // Optionally, clear form or redirect user
       } else {
         // Handle errors

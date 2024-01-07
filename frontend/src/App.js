@@ -14,6 +14,7 @@ import Logout from './MainPages/Logout';
 import ChangePasswordScreen from './Dashboard/ChangePasswordScreen';
 import './assets/styles/FooterToBot.css';
 import Footer from './components/common/footer';
+import ForgotPassword from './MainPages/ForgotPassword';
 
 import PrivateRoute from './components/PrivateRoute'; 
 
@@ -43,7 +44,8 @@ function App() {
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/profile" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
-          <Route path="/change-password" element={<ChangePasswordScreen />} />
+          <Route path="/change-password" element={<PrivateRoute><ChangePasswordScreen /></PrivateRoute>} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           {/* More routes can be added here */}
         </Routes>
       </div>

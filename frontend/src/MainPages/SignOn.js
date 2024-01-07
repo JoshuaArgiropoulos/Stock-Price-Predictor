@@ -35,11 +35,15 @@ function SignOn() {
       const data = await response.json();
       if (data.message) {
         setMessages([data.message]);
-        
-        if (data.message === "Login successful") {
+        if (data.message === "Please verify email") {
+          // Display a message to the user indicating that they need to verify their email.
+          setMessages(["Please verify your email before logging in."]);
+        }
+        else if (data.message === "Login successful") {
           login(data.user); // Call the login function with user data
           navigate('/dashboard'); // Pass userData as state
         }
+        
       } else if (data.messages) {
         setMessages(data.messages);
       }
@@ -70,6 +74,8 @@ function SignOn() {
         {messages.map((message, index) => (
           <div key={index} className="alert alert-warning">{message}</div>
         ))}
+
+        <p>Forgot your password? <a className="signup-link" href="/forgot-password">Click here</a> to reset it.</p>
 
         <p>If you don't have an account, <a className="signup-link" href="/SignUp">sign up</a>.</p>
         
