@@ -1,5 +1,5 @@
 .app-content {
-    min-height: calc(100vh - 2px); /* Adjust [Footer Height] */
+    min-height: calc(100vh - 105px); /* Adjust [Footer Height] */
     display: flex;
     flex-direction: column;
   }

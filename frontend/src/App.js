@@ -15,7 +15,7 @@ import ChangePasswordScreen from './Dashboard/ChangePasswordScreen';
 import './assets/styles/FooterToBot.css';
 import Footer from './components/common/footer';
 import ForgotPassword from './MainPages/ForgotPassword';
-
+import ResetPasswordPage from './MainPages/ResetPasswordPage';
 import PrivateRoute from './components/PrivateRoute'; 
 
 import { AuthProvider } from './components/AuthContext';
@@ -46,6 +46,7 @@ function App() {
           <Route path="/profile" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
           <Route path="/change-password" element={<PrivateRoute><ChangePasswordScreen /></PrivateRoute>} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
           {/* More routes can be added here */}
         </Routes>
       </div>

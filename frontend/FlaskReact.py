@@ -3,7 +3,7 @@ from flask import Flask, jsonify, request, send_from_directory, render_template,
 import requests
 from flask_cors import CORS
 from flask_mail import Mail, Message
-from itsdangerous import URLSafeTimedSerializer
+from itsdangerous import URLSafeTimedSerializer,  SignatureExpired, BadSignature
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
 import firebase_admin
@@ -14,11 +14,12 @@ app.config.from_pyfile('config.py')
 #--------------------------------------------------------------------------------------------------
 #FOR PROD
 
-# CORS(app, resources={r"/api/*": {"origins": "https://thriveonfinance.netlify.app"}})
-
+CORS(app, resources={r"/api/*": {"origins": "https://thriveonfinance.netlify.app"}})
+REACT_APP_FRONTEND_URL = "https://thriveonfinance.netlify.app"
 #FOR LOCAL
 
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+# CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+# REACT_APP_FRONTEND_URL = "http://localhost:3000"
 #---------------------------------------------------------------------------------------------------
 
 # Get the absolute path of the script
@@ -139,7 +140,8 @@ def logout():
     return jsonify({"message": "Logout successful"}), 200
 #-------------------------------Reset Password-----------------------------------------
 def send_reset_email(user_email, token):
-    reset_url = url_for('reset_password', token=token, _external=True)
+    
+    reset_url = f'{REACT_APP_FRONTEND_URL}/reset-password/{token}'
     msg = Message('Reset Your Password',
                   sender=app.config['MAIL_USERNAME'],
                   recipients=[user_email])
@@ -165,7 +167,7 @@ def reset_password(token):
             return jsonify({"message": "User not found"}), 404
     except:
         return jsonify({"message": "The reset link is invalid or has expired"}), 401
-#-------------------------Forgot password
+#-------------------------Forgot password--------------------------------------
 @app.route('/api/forgot-password', methods=['POST'])
 def request_reset():
     data = request.get_json()
@@ -183,6 +185,32 @@ def request_reset():
     send_reset_email(user_data['email'], token)
 
     return jsonify({"message": "Reset email sent"}), 200
+#-------------------------------Reset password--------------------------------------------
+@app.route('/api/reset_update/<token>', methods=['POST'], endpoint='reset_update_post')
+def reset_password(token):
+    data = request.get_json()
+    new_password = data.get('password')
+
+    try:
+        # Deserialize the token back into the user's email
+        user_email = s.loads(token, salt='reset-password-salt', max_age=3600)
+        
+        users_collection = db.collection('users')
+        user_document = users_collection.where('email', '==', user_email).get()
+
+        if user_document:
+            user_ref = users_collection.document(user_document[0].id)
+            new_hashed_password = generate_password_hash(new_password)
+            user_ref.update({'password_hash': new_hashed_password})
+            return jsonify({"message": "Password has been reset successfully"}), 200
+        else:
+            return jsonify({"message": "User not found"}), 404
+
+    except SignatureExpired:
+        return jsonify({"message": "The token is expired"}), 401
+
+    except BadSignature:
+        return jsonify({"message": "Invalid token"}), 401
 #-------------------------------Change Password -------------------------------------------
 @app.route('/api/change_password', methods=['POST'])
 def change_password():
