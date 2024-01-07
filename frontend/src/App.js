@@ -61,7 +61,7 @@ function App() {
           <Route path="/learn/investment-types" element={<InvestmentTypes />} />
           <Route path="/learn/account-types-canada" element={<AccountTypes />} />
           <Route path="/learn/budgeting-financial-planning" element={<Budget />} />
-          <Route path="/learn/savings-investments" element={<Investment/>} />
+          <Route path="/learn/savings-investments" element={<Investing/>} />
           <Route path="/learn/credit-management" element={<Credit />} />
           <Route path="/learn/taxation" element={<Taxes />} />
           <Route path="/learn/retirement-planning" element={<Retirement />} />
