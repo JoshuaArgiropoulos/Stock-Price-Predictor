@@ -48,22 +48,26 @@ function StockTable() {
 
     if (!ticker || (!sinceInception && !startDate) || !endDate) {
       setError("Please fill in all fields");
+      setIsLoading(false);
       return;
     }
     // Validate that the Start Date is before the End Date
   if (!sinceInception && new Date(startDate) >= new Date(endDate)) {
     setError("Start Date must be before End Date");
+    setIsLoading(false);
     return;
   }
   // Validate that the End Date is not a future date
   const currentDate = new Date();
   if (new Date(endDate) > currentDate) {
     setError("End Date cannot be a future date");
+    setIsLoading(false);
     return;
   }
   const historicalDate = '1800-01-01';
   if (!sinceInception && new Date(startDate) < new Date(historicalDate)) {
     setError("Start Date cannot be earlier than " + historicalDate);
+    setIsLoading(false);
     return;
   }
    
@@ -75,6 +79,7 @@ function StockTable() {
       const response = await fetch(`${API_URL}/api/stock-info/${ticker}?start_date=${effectiveStartDate}&end_date=${endDate}`);
       if (response.status === 404) {
         setError("Stock not found");
+        setIsLoading(false);
         setChartData(null);
         return;
       }
