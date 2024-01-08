@@ -1,4 +1,4 @@
-Project Name: ThriveOnFinance
+Project Name: ThriveOnFinance - https://thriveonfinance.netlify.app/
 
 Description
 ThriveOnFinance is a comprehensive web application designed to empower users with financial literacy and independence. It provides an array of features like user authentication, financial news, interactive tools for budgeting, investment education, and stock information using React, Flask, Firebase, and various APIs.
