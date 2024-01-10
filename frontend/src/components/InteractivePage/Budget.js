@@ -340,8 +340,7 @@ In conclusion, taking control of your debt is a powerful step towards achieving 
 <p>In conclusion, saving consistently is a fundamental step in achieving financial security and accomplishing your financial objectives. By paying yourself first, setting clear goals, and automating your savings, you can build a strong financial foundation that will enable you to invest and secure your financial future. Remember that it's never too early or too late to start saving and planning for a better financial tomorrow.</p>
         </>);
 
-        case 'financialEducation':
-        return (<></>);
+        
       
       default:
         return (
@@ -373,7 +372,7 @@ return (
             <li><a onClick={() => setSelectedSection('emergencyFunds')}>Emergency Funds</a></li>
             <li><a onClick={() => setSelectedSection('debtManagement')}>Debt Management</a></li>
             <li><a onClick={() => setSelectedSection('savingInvesting')}>Saving and Investing</a></li>
-            <li><a onClick={() => setSelectedSection('financialEducation')}>Financial Education</a></li>
+            
           </ul>
       </div>
       <div className={styles.contentWrapper}>
