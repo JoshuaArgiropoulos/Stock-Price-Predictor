@@ -8,6 +8,11 @@
     margin: 40px auto;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     border-radius: 10px;
+    flex-grow: 1;
+
+    /* margin-left: 135px; */
+    
+    
 }
 
 .title {
@@ -29,6 +34,7 @@
 
 .subTitle {
     color: #3498db;
+    
     margin-top: 30px;
     margin-bottom: 15px;
     font-weight: 500;
@@ -65,4 +71,53 @@
 .listItem:hover {
     color: #3498db;
     cursor: pointer;
+}
+.flexContainer {
+    display: flex;
+    flex-direction: row;
+  
+    align-items: flex-start; /* Aligns children (sidebar and content) side by side */
+}
+.sidebar {
+    width: 350px; /* Sidebar width */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left side of the page */
+    height: 100%; /* Full height */
+    background-color: #ffffff; /* White background */
+    padding: 20px; /* Inner spacing */
+    border-right: 2px solid #000000; /* Black right border for outline effect */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* Shadow for depth */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    overflow-y: auto; /* Enable vertical scrolling */
+    font-family: 'Arial', sans-serif; /* Stylish font */
+    color: #333333; /* Dark text color for contrast */
+}
+
+.sidebar h2 {
+    color: #2c3e50; /* Dark color for heading */
+    border-bottom: 1px solid #e0e0e0; /* Light grey border under heading */
+    padding-bottom: 10px; /* Spacing under heading */
+}
+
+.sidebar ul {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+}
+
+.sidebar ul li a {
+    color: #2c3e50; /* Dark color for links */
+    text-decoration: none; /* No underline */
+    display: block; /* Makes the entire area clickable */
+    padding: 10px 0; /* Spacing around links */
+    transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+.sidebar ul li a:hover {
+    color: #3498db; /* Light blue color change on hover */
+    text-decoration: none; /* Ensure no underline on hover */
+}
+.centeredContent {
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
 }
