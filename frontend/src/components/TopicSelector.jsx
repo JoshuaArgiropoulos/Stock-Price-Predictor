@@ -9,7 +9,7 @@ const TopicSelector = ({ onTopicChange }) => {
     "Account Types in Canada",
     "Budgeting and Financial Planning",
     "Savings and Investments",
-    "Credit Management",
+    "Credit and Loan Management",
     "Taxation",
     "Retirement Planning"
   ];

@@ -1,10 +1,6 @@
-import React, { useState } from 'react'; // Using useState hook directly
-
-// Import components
+import React, { useState } from 'react'; 
 import TopicSelector from '../components/TopicSelector';
 import ContentDisplay from '../components/ContentDisplay';
-
-// Import module CSS
 import styles from '../assets/styles/EducationPage.module.css';
 
 function EducationPage() {

@@ -23,7 +23,7 @@ const ContentDisplay = ({ topic }) => {
         return <BudgetingAndFinancialPlanningIntro/>
       case "Savings and Investments":
         return <SavingsAndInvestmentsIntro/>
-      case "Credit Management":
+      case "Credit and Loan Management":
         return <CreditManagementIntro/>
       case "Taxation":
         return <TaxationIntro/>
