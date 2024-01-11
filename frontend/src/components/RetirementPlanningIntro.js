@@ -11,7 +11,7 @@ const RetirementPlanningIntro = ({ topic }) => {
                 </div>
                 
                 <section className={styles['intro-text']}>
-                    <p>Embark on a journey to plan for a secure and fulfilling retirement. Learn about various retirement accounts, investment options, and financial planning tools to build a nest egg that provides peace of mind. Whether you're just starting or nearing retirement age, we're here to help you make the most of your golden years.</p>
+                    <p>Embark on a journey to plan for a secure and fulfilling retirement.</p>
                 </section>
                 
                 <div className={styles['cta-container']}>
