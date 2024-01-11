@@ -33,7 +33,7 @@
 }
 
 .subTitle {
-    color: #3498db;
+    color: #0099ff;
     
     margin-top: 30px;
     margin-bottom: 15px;
@@ -42,8 +42,22 @@
    
     
     border-bottom: 1px solid #e0e0e0; /* Light grey border */
-  padding-bottom: 10px; /* Add some space above the border */
-  margin-bottom: 20px; /* Increase space below the title */
+    padding-bottom: 10px; /* Add some space above the border */
+    margin-bottom: 20px; /* Increase space below the title */
+
+}
+.subtitle {
+    color: #1c80c2;
+    
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 500;
+
+   
+    
+    border-bottom: 1px solid #e0e0e0; /* Light grey border */
+    padding-bottom: 10px; /* Add some space above the border */
+    margin-bottom: 20px; /* Increase space below the title */
 
 }
 
