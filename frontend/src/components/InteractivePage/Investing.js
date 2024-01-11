@@ -98,12 +98,12 @@ function Investing() {
           <h2>Navigation Bar</h2>
           <ul>
             <li>
-              <a onClick={() => setSelectedSection('financialPlanning')}>
+              <a href="#" onClick={() => setSelectedSection('financialPlanning')}>
               Managing Your Investment Portfolio
               </a>
             </li>
             <li>
-              <a onClick={() => setSelectedSection('creatingBudget')}>
+              <a href="#" onClick={() => setSelectedSection('creatingBudget')}>
               Effective Saving Techniques
               </a>
             </li>

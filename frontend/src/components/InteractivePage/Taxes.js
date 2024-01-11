@@ -121,22 +121,22 @@ function Taxes() {
           <h2>Navigation Bar</h2>
           <ul>
             <li>
-              <a onClick={() => setSelectedSection('financialPlanning')}>
+              <a href="#" onClick={() => setSelectedSection('financialPlanning')}>
               Basic of Canadian Income Taxes
               </a>
             </li>
             <li>
-              <a onClick={() => setSelectedSection('creatingBudget')}>
+              <a href="#" onClick={() => setSelectedSection('creatingBudget')}>
               Deductions and Tax Credits
               </a>
             </li>
             <li>
-              <a onClick={() => setSelectedSection('debt')}>
+              <a href="#" onClick={() => setSelectedSection('debt')}>
               Tax Planning Strategies
               </a>
             </li>
             <li>
-              <a onClick={() => setSelectedSection('loans')}>
+              <a href="#" onClick={() => setSelectedSection('loans')}>
               Filing Your Taxes
               </a>
             </li>

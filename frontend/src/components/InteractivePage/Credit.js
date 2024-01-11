@@ -170,22 +170,22 @@ Our mission is to empower you with the skills and understanding needed to make i
           <h2>Navigation Bar</h2>
           <ul>
             <li>
-              <a onClick={() => setSelectedSection('financialPlanning')}>
+              <a href="#" onClick={() => setSelectedSection('financialPlanning')}>
               Understanding Credit Scores
               </a>
             </li>
             <li>
-              <a onClick={() => setSelectedSection('creatingBudget')}>
+              <a href="#" onClick={() => setSelectedSection('creatingBudget')}>
               Managing and Improving Your Credit
               </a>
             </li>
             <li>
-              <a onClick={() => setSelectedSection('debt')}>
+              <a href="#" onClick={() => setSelectedSection('debt')}>
               Dealing with Debt
               </a>
             </li>
             <li>
-              <a onClick={() => setSelectedSection('loans')}>
+              <a href="#" onClick={() => setSelectedSection('loans')}>
               Dealing with Loans
               </a>
             </li>

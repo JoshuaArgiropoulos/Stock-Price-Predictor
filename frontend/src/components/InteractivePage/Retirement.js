@@ -117,22 +117,22 @@ function Retirement() {
           <h2>Navigation Bar</h2>
           <ul>
             <li>
-              <a onClick={() => setSelectedSection('financialPlanning')}>
+              <a href="#" onClick={() => setSelectedSection('financialPlanning')}>
               Understanding Retirement Planning
               </a>
             </li>
             <li>
-              <a onClick={() => setSelectedSection('creatingBudget')}>
+              <a href="#" onClick={() => setSelectedSection('creatingBudget')}>
               Retirement Income Sources
               </a>
             </li>
             <li>
-              <a onClick={() => setSelectedSection('debt')}>
+              <a href="#" onClick={() => setSelectedSection('debt')}>
               Creating a Retirement Plan
               </a>
             </li>
             <li>
-              <a onClick={() => setSelectedSection('loans')}>
+              <a href="#" onClick={() => setSelectedSection('loans')}>
               Regular Review and Adjustments
               </a>
             </li>

@@ -365,15 +365,14 @@ return (
       <div className={styles.sidebar}>
           <h2>Navigation Bar</h2>
           <ul>
-            <li><a onClick={() => setSelectedSection('financialPlanning')}>What is Budgeting and Financial Planning</a></li>
-            <li><a onClick={() => setSelectedSection('creatingBudget')}>Creating a Budget</a></li>
-            <li><a onClick={() => setSelectedSection('maintainingBudget')}>Maintaining a Budget</a></li>
-            <li><a onClick={() => setSelectedSection('settingGoals')}>Setting Financial Goals</a></li>
-            <li><a onClick={() => setSelectedSection('emergencyFunds')}>Emergency Funds</a></li>
-            <li><a onClick={() => setSelectedSection('debtManagement')}>Debt Management</a></li>
-            <li><a onClick={() => setSelectedSection('savingInvesting')}>Saving and Investing</a></li>
-            
-          </ul>
+  <li><a href="#" onClick={() => setSelectedSection('financialPlanning')}>What is Budgeting and Financial Planning</a></li>
+  <li><a href="#" onClick={() => setSelectedSection('creatingBudget')}>Creating a Budget</a></li>
+  <li><a href="#" onClick={() => setSelectedSection('maintainingBudget')}>Maintaining a Budget</a></li>
+  <li><a href="#" onClick={() => setSelectedSection('settingGoals')}>Setting Financial Goals</a></li>
+  <li><a href="#" onClick={() => setSelectedSection('emergencyFunds')}>Emergency Funds</a></li>
+  <li><a href="#" onClick={() => setSelectedSection('debtManagement')}>Debt Management</a></li>
+  <li><a href="#" onClick={() => setSelectedSection('savingInvesting')}>Saving and Investing</a></li>
+</ul>
       </div>
       <div className={styles.contentWrapper}>
       <div className={styles.centeredContent}>
