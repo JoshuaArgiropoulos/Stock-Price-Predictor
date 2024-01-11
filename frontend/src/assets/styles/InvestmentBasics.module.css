@@ -135,3 +135,23 @@
     justify-content: center;
     align-items: center;
 }
+
+.button {
+    background-color: #ffffff; /* White background to match the sidebar */
+    color: #2c3e50; /* Dark color for text */
+    border: none; /* No border */
+    padding: 10px 0; /* Vertical padding, similar to your sidebar links */
+    text-align: left; /* Align text to the left */
+    text-decoration: none; /* No underline */
+    display: block; /* Display block for full-width click area */
+    width: 100%; /* Full width of the container */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+    font-family: 'Arial', sans-serif; /* Consistent font with the sidebar */
+    cursor: pointer; /* Cursor to indicate it's clickable */
+    outline: none; /* Remove outline to keep the style clean */
+}
+
+.button:hover, .button:focus {
+    background-color: #3498db; /* Light blue background on hover and focus */
+    color: #ffffff; /* White text color on hover and focus */
+}

@@ -365,13 +365,13 @@ return (
       <div className={styles.sidebar}>
           <h2>Navigation Bar</h2>
           <ul>
-  <li><a href="#" onClick={() => setSelectedSection('financialPlanning')}>What is Budgeting and Financial Planning</a></li>
-  <li><a href="#" onClick={() => setSelectedSection('creatingBudget')}>Creating a Budget</a></li>
-  <li><a href="#" onClick={() => setSelectedSection('maintainingBudget')}>Maintaining a Budget</a></li>
-  <li><a href="#" onClick={() => setSelectedSection('settingGoals')}>Setting Financial Goals</a></li>
-  <li><a href="#" onClick={() => setSelectedSection('emergencyFunds')}>Emergency Funds</a></li>
-  <li><a href="#" onClick={() => setSelectedSection('debtManagement')}>Debt Management</a></li>
-  <li><a href="#" onClick={() => setSelectedSection('savingInvesting')}>Saving and Investing</a></li>
+  <li><button className={styles.button} onClick={() => setSelectedSection('financialPlanning')}>What is Budgeting and Financial Planning</button></li>
+  <li><button className= {styles.button} onClick={() => setSelectedSection('creatingBudget')}>Creating a Budget</button></li>
+  <li><button className={styles.button} onClick={() => setSelectedSection('maintainingBudget')}>Maintaining a Budget</button></li>
+  <li><button className={styles.button} onClick={() => setSelectedSection('settingGoals')}>Setting Financial Goals</button></li>
+  <li><button className={styles.button} onClick={() => setSelectedSection('emergencyFunds')}>Emergency Funds</button></li>
+  <li><button className={styles.button} onClick={() => setSelectedSection('debtManagement')}>Debt Management</button></li>
+  <li><button className={styles.button} onClick={() => setSelectedSection('savingInvesting')}>Saving and Investing</button></li>
 </ul>
       </div>
       <div className={styles.contentWrapper}>

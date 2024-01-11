@@ -116,28 +116,27 @@ function Retirement() {
         <div className={styles.sidebar}>
           <h2>Navigation Bar</h2>
           <ul>
-            <li>
-              <a href="#" onClick={() => setSelectedSection('financialPlanning')}>
-              Understanding Retirement Planning
-              </a>
-            </li>
-            <li>
-              <a href="#" onClick={() => setSelectedSection('creatingBudget')}>
-              Retirement Income Sources
-              </a>
-            </li>
-            <li>
-              <a href="#" onClick={() => setSelectedSection('debt')}>
-              Creating a Retirement Plan
-              </a>
-            </li>
-            <li>
-              <a href="#" onClick={() => setSelectedSection('loans')}>
-              Regular Review and Adjustments
-              </a>
-            </li>
-            
-          </ul>
+  <li>
+    <button className={styles.button} onClick={() => setSelectedSection('financialPlanning')}>
+      Understanding Retirement Planning
+    </button>
+  </li>
+  <li>
+    <button className={styles.button} onClick={() => setSelectedSection('creatingBudget')}>
+      Retirement Income Sources
+    </button>
+  </li>
+  <li>
+    <button className={styles.button} onClick={() => setSelectedSection('debt')}>
+      Creating a Retirement Plan
+    </button>
+  </li>
+  <li>
+    <button className={styles.button} onClick={() => setSelectedSection('loans')}>
+      Regular Review and Adjustments
+    </button>
+  </li>
+</ul>
         </div>
         <div className={styles.contentWrapper}>
           <div className={styles.centeredContent}>{renderContent()}</div>

@@ -169,28 +169,27 @@ Our mission is to empower you with the skills and understanding needed to make i
         <div className={styles.sidebar}>
           <h2>Navigation Bar</h2>
           <ul>
-            <li>
-              <a href="#" onClick={() => setSelectedSection('financialPlanning')}>
-              Understanding Credit Scores
-              </a>
-            </li>
-            <li>
-              <a href="#" onClick={() => setSelectedSection('creatingBudget')}>
-              Managing and Improving Your Credit
-              </a>
-            </li>
-            <li>
-              <a href="#" onClick={() => setSelectedSection('debt')}>
-              Dealing with Debt
-              </a>
-            </li>
-            <li>
-              <a href="#" onClick={() => setSelectedSection('loans')}>
-              Dealing with Loans
-              </a>
-            </li>
-            {/* Add other navigation items here */}
-          </ul>
+  <li>
+    <button className={styles.button} onClick={() => setSelectedSection('financialPlanning')}>
+      Understanding Credit Scores
+    </button>
+  </li>
+  <li>
+    <button className={styles.button} onClick={() => setSelectedSection('creatingBudget')}>
+      Managing and Improving Your Credit
+    </button>
+  </li>
+  <li>
+    <button className={styles.button} onClick={() => setSelectedSection('debt')}>
+      Dealing with Debt
+    </button>
+  </li>
+  <li>
+    <button className={styles.button} onClick={() => setSelectedSection('loans')}>
+      Dealing with Loans
+    </button>
+  </li>
+</ul>
         </div>
         <div className={styles.contentWrapper}>
           <div className={styles.centeredContent}>{renderContent()}</div>

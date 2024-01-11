@@ -120,29 +120,27 @@ function Taxes() {
         <div className={styles.sidebar}>
           <h2>Navigation Bar</h2>
           <ul>
-            <li>
-              <a href="#" onClick={() => setSelectedSection('financialPlanning')}>
-              Basic of Canadian Income Taxes
-              </a>
-            </li>
-            <li>
-              <a href="#" onClick={() => setSelectedSection('creatingBudget')}>
-              Deductions and Tax Credits
-              </a>
-            </li>
-            <li>
-              <a href="#" onClick={() => setSelectedSection('debt')}>
-              Tax Planning Strategies
-              </a>
-            </li>
-            <li>
-              <a href="#" onClick={() => setSelectedSection('loans')}>
-              Filing Your Taxes
-              </a>
-            </li>
-            
-            
-          </ul>
+  <li>
+    <button className={styles.button} onClick={() => setSelectedSection('financialPlanning')}>
+      Basic of Canadian Income Taxes
+    </button>
+  </li>
+  <li>
+    <button className={styles.button} onClick={() => setSelectedSection('creatingBudget')}>
+      Deductions and Tax Credits
+    </button>
+  </li>
+  <li>
+    <button className={styles.button} onClick={() => setSelectedSection('debt')}>
+      Tax Planning Strategies
+    </button>
+  </li>
+  <li>
+    <button className={styles.button} onClick={() => setSelectedSection('loans')}>
+      Filing Your Taxes
+    </button>
+  </li>
+</ul>
         </div>
         <div className={styles.contentWrapper}>
           <div className={styles.centeredContent}>{renderContent()}</div>

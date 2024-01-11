@@ -97,18 +97,17 @@ function Investing() {
         <div className={styles.sidebar}>
           <h2>Navigation Bar</h2>
           <ul>
-            <li>
-              <a href="#" onClick={() => setSelectedSection('financialPlanning')}>
-              Managing Your Investment Portfolio
-              </a>
-            </li>
-            <li>
-              <a href="#" onClick={() => setSelectedSection('creatingBudget')}>
-              Effective Saving Techniques
-              </a>
-            </li>
-            {/* Add other navigation items here */}
-          </ul>
+  <li>
+    <button className={styles.button} onClick={() => setSelectedSection('financialPlanning')}>
+      Managing Your Investment Portfolio
+    </button>
+  </li>
+  <li>
+    <button className={styles.button} onClick={() => setSelectedSection('creatingBudget')}>
+      Effective Saving Techniques
+    </button>
+  </li>
+</ul>
         </div>
         <div className={styles.contentWrapper}>
           <div className={styles.centeredContent}>{renderContent()}</div>
